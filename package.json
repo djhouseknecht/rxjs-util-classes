@@ -13,10 +13,6 @@
     "codecov": "codecov",
     "semantic-release": "semantic-release"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/djhouseknecht/rxjs-util-classes.git"
-  },
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
@@ -25,6 +21,7 @@
     "codecov": "^3.6.4",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.1.0",
+    "husky": "^4.2.1",
     "jest": "^25.1.0",
     "semantic-release": "^17.0.2",
     "tslint": "^6.0.0",
@@ -34,10 +31,20 @@
   "files": [
     "build"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test",
+      "pre-push": "npm run lint && npm run test"
+    }
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/djhouseknecht/rxjs-util-classes.git"
   },
   "bugs": {
     "url": "https://github.com/djhouseknecht/rxjs-util-classes/issues"
