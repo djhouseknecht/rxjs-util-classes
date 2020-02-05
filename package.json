@@ -1,28 +1,55 @@
 {
-	"name": "rxjs-util-classes",
-	"version": "0.0.1",
-	"description": "Simple RxJS implementations for Redux-like store, state management, cache maps, and event emitters that are commonly used across projects.",
-	"main": "src/index.ts",
-	"scripts": {
-		"test": "echo \"no tests yet\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+ssh://git@github.com/djhouseknecht/rxjs-util-classes.git"
-	},
-	"keywords": [
-		"rxjs",
-		"utils",
-		"state",
-		"store",
-		"state management",
-		"redux",
-		"dynamic store"
-	],
-	"author": "David Houseknecht <david.houseknecht.dev@gmail.com>",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/djhouseknecht/rxjs-util-classes/issues"
-	},
-	"homepage": "https://github.com/djhouseknecht/rxjs-util-classes#readme"
+  "name": "rxjs-util-classes",
+  "version": "0.0.0-development",
+  "description": "Simple RxJS implementations for Redux-like store, state management, cache maps, and event emitters that are commonly used across projects.",
+  "author": "David Houseknecht <david.houseknecht.dev@gmail.com>",
+  "license": "MIT",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "tslint --project . --config tslint.json",
+    "build": "tsc --project .",
+    "commit": "git-cz",
+    "codecov": "codecov",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/djhouseknecht/rxjs-util-classes.git"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@types/jest": "^25.1.1",
+    "babel-jest": "^25.1.0",
+    "codecov": "^3.6.4",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.1.0",
+    "jest": "^25.1.0",
+    "semantic-release": "^17.0.2",
+    "tslint": "^6.0.0",
+    "tslint-config-semistandard": "^8.0.1",
+    "typescript": "~3.6.5"
+  },
+  "files": [
+    "build"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/djhouseknecht/rxjs-util-classes/issues"
+  },
+  "homepage": "https://github.com/djhouseknecht/rxjs-util-classes#readme",
+  "keywords": [
+    "rxjs",
+    "utils",
+    "state",
+    "store",
+    "state management",
+    "redux",
+    "dynamic store"
+  ]
 }

@@ -1,3 +1,7 @@
+# module specific
+coverage
+build 
+
 # Logs
 logs
 *.log
