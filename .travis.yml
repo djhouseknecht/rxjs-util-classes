@@ -16,18 +16,17 @@ install:
 
 jobs:
   include:
-    # test and lint in paralell
-    - stage: 'Test'
-      script: npm run test
-      script: npm run lint
-    # report coverage
-    - stage: 'Report Test Coverage'
-      script: npm run codecov
-    # build src
-    - stage: 'Build'
-      script: npm run build
-    # run release branch if we are on master
-    - stage: 'Release to npm'
+    # Test, Lint, and Report Coverage
+    - stage: "Test"
+      script:
+        - npm run test
+        - npm run lint
+        - npm run codecov
+        - npm run build
+    # build and release
+    - stage: "Release"
       if: branch == master && !fork
       node_js: 12
-      script: npx semantic-release
+      script:
+        - npm run build
+        - npx semantic-release
