@@ -3,6 +3,7 @@ coverage
 build
 .ignore
 .fake-app
+_config.yml
 
 # Logs
 logs
