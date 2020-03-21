@@ -129,13 +129,13 @@ replayMap.delete('my-key');
 
 Maybe add this to patch release on doc changes: https://github.com/semantic-release/semantic-release/issues/192#issuecomment-333328071
 
-[Observable Maps]: observablemaps
-[ObservableMap]: observablemap
-[BehaviorMap]: behavioremap
-[ReplayMap]: replaymap
-[Important Notes about ObservableMaps]: important-notes-about-observablemaps
+[Observable Maps]: #observablemaps
+[ObservableMap]: #observablemap
+[BehaviorMap]: #behavioremap
+[ReplayMap]: #replaymap
+[Important Notes about ObservableMaps]: #important-notes-about-observablemaps
 
-[Future Features]: future-features
+[Future Features]: #future-features
 
 [map recipes]: docs/recipes/maps.md
 

@@ -51,7 +51,7 @@ Implementation of [BaseMap](_maps_base_map_.basemap.md) that uses standard `Subj
 
 *Overrides [BaseMap](_maps_base_map_.basemap.md).[constructor](_maps_base_map_.basemap.md#protected-constructor)*
 
-*Defined in [maps/observable-map.ts:8](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/observable-map.ts#L8)*
+*Defined in [maps/observable-map.ts:8](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/observable-map.ts#L8)*
 
 Construct a new instance
 
@@ -65,7 +65,7 @@ Construct a new instance
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[_map](_maps_base_map_.basemap.md#protected-_map)*
 
-*Defined in [maps/base-map.ts:17](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L17)*
+*Defined in [maps/base-map.ts:17](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L17)*
 
 Native JavaScript map that holds the key-values
 
@@ -77,7 +77,7 @@ ___
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[size](_maps_base_map_.basemap.md#size)*
 
-*Defined in [maps/base-map.ts:22](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L22)*
+*Defined in [maps/base-map.ts:22](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L22)*
 
 Size of the map
 
@@ -89,7 +89,7 @@ Size of the map
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[_getOrInit$](_maps_base_map_.basemap.md#protected-_getorinit)*
 
-*Defined in [maps/base-map.ts:157](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L157)*
+*Defined in [maps/base-map.ts:157](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L157)*
 
 Get (or create) subject for a specified key
 
@@ -109,7 +109,7 @@ ___
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[clear](_maps_base_map_.basemap.md#clear)*
 
-*Defined in [maps/base-map.ts:83](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L83)*
+*Defined in [maps/base-map.ts:83](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L83)*
 
 Will call `.complete()` on all subjects and
  clear the map
@@ -124,7 +124,7 @@ ___
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[delete](_maps_base_map_.basemap.md#delete)*
 
-*Defined in [maps/base-map.ts:97](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L97)*
+*Defined in [maps/base-map.ts:97](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L97)*
 
 Will call `.complete()` on key's subject and
  remove the key from the map.
@@ -145,7 +145,7 @@ ___
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[emitError](_maps_base_map_.basemap.md#emiterror)*
 
-*Defined in [maps/base-map.ts:73](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L73)*
+*Defined in [maps/base-map.ts:73](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L73)*
 
 Emit an error on the key's observable. This
  will call `.error(error)` which ends the observable
@@ -171,7 +171,7 @@ ___
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[entries$](_maps_base_map_.basemap.md#entries)*
 
-*Defined in [maps/base-map.ts:136](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L136)*
+*Defined in [maps/base-map.ts:136](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L136)*
 
 Get the map's entries as key-observable
 
@@ -185,7 +185,7 @@ ___
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[forEach$](_maps_base_map_.basemap.md#foreach)*
 
-*Defined in [maps/base-map.ts:118](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L118)*
+*Defined in [maps/base-map.ts:118](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L118)*
 
 Will call the function for each observable-key value in the map.
 
@@ -214,7 +214,7 @@ ___
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[get$](_maps_base_map_.basemap.md#get)*
 
-*Defined in [maps/base-map.ts:129](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L129)*
+*Defined in [maps/base-map.ts:129](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L129)*
 
 Get the observable for the specified key.
 
@@ -234,7 +234,7 @@ ___
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[has](_maps_base_map_.basemap.md#has)*
 
-*Defined in [maps/base-map.ts:46](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L46)*
+*Defined in [maps/base-map.ts:46](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L46)*
 
 Check if a key exists on the map
 
@@ -256,7 +256,7 @@ ___
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[keys](_maps_base_map_.basemap.md#keys)*
 
-*Defined in [maps/base-map.ts:109](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L109)*
+*Defined in [maps/base-map.ts:109](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L109)*
 
 Get the map's keys
 
@@ -270,7 +270,7 @@ ___
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[set](_maps_base_map_.basemap.md#set)*
 
-*Defined in [maps/base-map.ts:57](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L57)*
+*Defined in [maps/base-map.ts:57](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L57)*
 
 Set a key-value pair. This will create a [SupportedSubjectTypes](../modules/_interfaces_.md#supportedsubjecttypes)
  (or reuse if key already existed) for the key specified.
@@ -293,7 +293,7 @@ ___
 
 *Inherited from [BaseMap](_maps_base_map_.basemap.md).[values$](_maps_base_map_.basemap.md#values)*
 
-*Defined in [maps/base-map.ts:145](https://github.com/djhouseknecht/rxjs-util-classes/blob/d598246/src/maps/base-map.ts#L145)*
+*Defined in [maps/base-map.ts:145](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L145)*
 
 Get the map's ovservable values
 
