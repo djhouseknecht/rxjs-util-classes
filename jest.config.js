@@ -1,5 +1,3 @@
-
-
 module.exports = {
   testEnvironment: 'node',
   roots: [
@@ -14,12 +12,13 @@ module.exports = {
     '/node_modules/'
   ],
   transform: {
-    '^.+\\.[t|j]sx?$': 'babel-jest'
-    // '^.+\\.tsx?$': 'ts-jest'
+    '^.+\\.tsx?$': 'ts-jest'
   },
   collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
+    '!src/index.ts',
+    '!src/**/*.spec.{js,jsx,ts,tsx}',
     '!**/node_modules/**',
     '!**/types/**'
   ],
@@ -27,12 +26,12 @@ module.exports = {
     'lcov', 'text'
   ],
   coverageThreshold: {
-    // global: {
-    //   branches: 100,
-    //   functions: 100,
-    //   lines: 100,
-    //   statements: 100
-    // }
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100
+    }
   },
   coverageDirectory: './coverage'
 };

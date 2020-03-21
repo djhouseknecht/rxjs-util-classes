@@ -1,6 +1,7 @@
 # module specific
 coverage
-build 
+build
+.ignore
 
 # Logs
 logs
