@@ -1,8 +1,8 @@
 import { BaseMap } from '../../src/maps/base-map';
-import { SupportedSubjectTypes } from '../../src/interfaces';
+import { SupportedSubjectTypes, SupportedKeyTypes } from '../../src/interfaces';
 import { BehaviorSubject, Subject, Observable } from 'rxjs';
 
-class TestableBaseMap<K, V> extends BaseMap<K, V, any> {
+class TestableBaseMap<K extends SupportedKeyTypes, V extends any> extends BaseMap<K, V, any> {
   constructor (subject: SupportedSubjectTypes, other?: any) { super(subject, other); }
 }
 
@@ -40,6 +40,26 @@ describe('BaseMap', () => {
         expect(value).toBe(obj.value);
         done();
       });
+    });
+  });
+
+  describe('emitError()', () => {
+    test('should emit an error and delete the key', (done) => {
+      const obj = { key: 'key', value: 'map-value', error: 'some error' };
+      const deleteSpy = jest.spyOn(baseMap['_map'], 'delete');
+
+      baseMap.set(obj.key, obj.value);
+
+      baseMap.get$(obj.key).subscribe(value => {
+        expect(value).toBe(obj.value);
+      }, async err => {
+        expect(err).toEqual(obj.error);
+        await new Promise(res => setTimeout(res, 1));
+        expect(deleteSpy).toHaveBeenCalled();
+        done();
+      });
+
+      baseMap.emitError(obj.key, obj.error);
     });
   });
 

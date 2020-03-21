@@ -2,6 +2,7 @@
 coverage
 build
 .ignore
+.fake-app
 
 # Logs
 logs

@@ -1,3 +1,7 @@
+[rxjs-util-classes](README.md) › [Globals](globals.md)
+
+# rxjs-util-classes
+
 [![Build Status](https://travis-ci.org/djhouseknecht/rxjs-util-classes.svg?branch=master)](https://travis-ci.org/djhouseknecht/rxjs-util-classes)  [![codecov](https://codecov.io/gh/djhouseknecht/rxjs-util-classes/branch/master/graph/badge.svg)](https://codecov.io/gh/djhouseknecht/rxjs-util-classes)  [![npm version](https://badge.fury.io/js/rxjs-util-classes.svg)](https://badge.fury.io/js/rxjs-util-classes)  [![dependabot-status](https://flat.badgen.net/dependabot/djhouseknecht/rxjs-util-classes/?icon=dependabot)][dependabot]  [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)  [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) 
 
 # RxJS-Util-Classes
@@ -82,7 +86,6 @@ behaviorMap.emitError('my-key', 'there was an error!');
 ### ReplayMap
 
 Uses the RxJS ReplaySubject so subscribers will receive the last `nth` emitted values. This class _requires_ an initial replay number to construct all underlying ReplaySubject. ([Full API](docs/api/classes/_maps_replay_map_.replaymap.md))
-
 
 ``` ts
 import { ReplayMap } from 'rxjs-util-classes';

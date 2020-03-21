@@ -9,7 +9,9 @@
     "test": "jest",
     "test:watch": "jest --watch --collectCoverage=false",
     "lint": "tslint --project . --config tslint.json",
+    "lint:fix": "tslint --project . --config tslint.json --fix",
     "build": "tsc --project .",
+    "doc": "typedoc --options typedoc.config.js",
     "commit": "git-cz",
     "codecov": "codecov",
     "semantic-release": "semantic-release"
@@ -30,9 +32,11 @@
     "jest": "^25.1.0",
     "semantic-release": "^17.0.2",
     "ts-jest": "^25.2.1",
-    "tslint": "^6.0.0",
+    "tslint": "^6.1.0",
     "tslint-config-semistandard": "^8.0.1",
-    "typescript": "~3.6.5"
+    "typedoc": "^0.17.1",
+    "typedoc-plugin-markdown": "^2.2.17",
+    "typescript": "^3.8.3"
   },
   "files": [
     "build",
