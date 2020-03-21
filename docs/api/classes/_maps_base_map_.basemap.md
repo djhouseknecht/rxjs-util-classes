@@ -53,7 +53,7 @@ BaseMap class used to provide shared functionality for implementing classes.
 
 \+ **new BaseMap**(`subjectClass`: S, `initialOption?`: [OptionValue](../modules/_interfaces_.md#optionvalue)‹S, V›): *[BaseMap](_maps_base_map_.basemap.md)*
 
-*Defined in [maps/base-map.ts:22](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L22)*
+*Defined in [maps/base-map.ts:22](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L22)*
 
 Must be overridden. Takes a [SupportedSubjectTypes](../modules/_interfaces_.md#supportedsubjecttypes) and any initial option
  - [BehaviorMap](_maps_behavior_map_.behaviormap.md) initial option is the starting value for the `BehaviorSubject`
@@ -77,7 +77,7 @@ this instance
 
 • **_map**: *Map‹K, [SubjectType](../modules/_interfaces_.md#subjecttype)‹S, V››* = new Map()
 
-*Defined in [maps/base-map.ts:17](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L17)*
+*Defined in [maps/base-map.ts:17](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L17)*
 
 Native JavaScript map that holds the key-values
 
@@ -87,7 +87,7 @@ ___
 
 • **size**: *number* = this._map.size
 
-*Defined in [maps/base-map.ts:22](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L22)*
+*Defined in [maps/base-map.ts:22](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L22)*
 
 Size of the map
 
@@ -97,7 +97,7 @@ Size of the map
 
 ▸ **_getOrInit$**(`key`: K): *[SubjectType](../modules/_interfaces_.md#subjecttype)‹S, V›*
 
-*Defined in [maps/base-map.ts:157](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L157)*
+*Defined in [maps/base-map.ts:157](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L157)*
 
 Get (or create) subject for a specified key
 
@@ -115,7 +115,7 @@ ___
 
 ▸ **clear**(): *void*
 
-*Defined in [maps/base-map.ts:83](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L83)*
+*Defined in [maps/base-map.ts:83](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L83)*
 
 Will call `.complete()` on all subjects and
  clear the map
@@ -128,7 +128,7 @@ ___
 
 ▸ **delete**(`key`: K): *boolean*
 
-*Defined in [maps/base-map.ts:97](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L97)*
+*Defined in [maps/base-map.ts:97](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L97)*
 
 Will call `.complete()` on key's subject and
  remove the key from the map.
@@ -147,7 +147,7 @@ ___
 
 ▸ **emitError**(`key`: K, `error`: any): *this*
 
-*Defined in [maps/base-map.ts:73](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L73)*
+*Defined in [maps/base-map.ts:73](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L73)*
 
 Emit an error on the key's observable. This
  will call `.error(error)` which ends the observable
@@ -171,7 +171,7 @@ ___
 
 ▸ **entries$**(): *IterableIterator‹[K, Observable‹V›]›*
 
-*Defined in [maps/base-map.ts:136](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L136)*
+*Defined in [maps/base-map.ts:136](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L136)*
 
 Get the map's entries as key-observable
 
@@ -183,7 +183,7 @@ ___
 
 ▸ **forEach$**(`callbackfn`: function): *void*
 
-*Defined in [maps/base-map.ts:118](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L118)*
+*Defined in [maps/base-map.ts:118](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L118)*
 
 Will call the function for each observable-key value in the map.
 
@@ -210,7 +210,7 @@ ___
 
 ▸ **get$**(`key`: K): *Observable‹V›*
 
-*Defined in [maps/base-map.ts:129](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L129)*
+*Defined in [maps/base-map.ts:129](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L129)*
 
 Get the observable for the specified key.
 
@@ -228,7 +228,7 @@ ___
 
 ▸ **has**(`key`: K): *boolean*
 
-*Defined in [maps/base-map.ts:46](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L46)*
+*Defined in [maps/base-map.ts:46](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L46)*
 
 Check if a key exists on the map
 
@@ -248,7 +248,7 @@ ___
 
 ▸ **keys**(): *IterableIterator‹K›*
 
-*Defined in [maps/base-map.ts:109](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L109)*
+*Defined in [maps/base-map.ts:109](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L109)*
 
 Get the map's keys
 
@@ -260,7 +260,7 @@ ___
 
 ▸ **set**(`key`: K, `value`: V): *this*
 
-*Defined in [maps/base-map.ts:57](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L57)*
+*Defined in [maps/base-map.ts:57](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L57)*
 
 Set a key-value pair. This will create a [SupportedSubjectTypes](../modules/_interfaces_.md#supportedsubjecttypes)
  (or reuse if key already existed) for the key specified.
@@ -281,7 +281,7 @@ ___
 
 ▸ **values$**(): *IterableIterator‹Observable‹V››*
 
-*Defined in [maps/base-map.ts:145](https://github.com/djhouseknecht/rxjs-util-classes/blob/50e007f/src/maps/base-map.ts#L145)*
+*Defined in [maps/base-map.ts:145](https://github.com/djhouseknecht/rxjs-util-classes/blob/c1773f5/src/maps/base-map.ts#L145)*
 
 Get the map's ovservable values
 

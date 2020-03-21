@@ -6,8 +6,10 @@ Simple RxJS implementations for common classes used across many different types 
 
 #### Index
 
-[Observable Maps] - Basic JavaScript [Map] wrapper to allow use of observables. 
-[Future Features] - Features coming soon
+* [Observable Maps] - Basic JavaScript [Map] wrapper to allow use of observables. 
+* [Future Features] - Features coming soon
+
+-----------------
 
 ## Observable Maps
 
@@ -126,9 +128,9 @@ replayMap.delete('my-key');
 
 Maybe add this to patch release on doc changes: https://github.com/semantic-release/semantic-release/issues/192#issuecomment-333328071
 
-[Observable Maps]: #observablemaps
+[Observable Maps]: #observable-maps
 [ObservableMap]: #observablemap
-[BehaviorMap]: #behavioremap
+[BehaviorMap]: #behaviormap
 [ReplayMap]: #replaymap
 [Important Notes about ObservableMaps]: #important-notes-about-observablemaps
 
