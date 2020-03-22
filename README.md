@@ -126,7 +126,7 @@ replayMap.delete('my-key');
 
 ### TODO
 
-Maybe add this to patch release on doc changes: https://github.com/semantic-release/semantic-release/issues/192#issuecomment-333328071
+Add more features 
 
 [Observable Maps]: #observable-maps
 [ObservableMap]: #observablemap
