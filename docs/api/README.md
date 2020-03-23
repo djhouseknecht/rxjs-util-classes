@@ -10,8 +10,33 @@ Simple RxJS implementations for common classes used across many different types 
 
 #### Index
 
+* [Installation] - Install the package and basic imports
 * [Observable Maps] - Basic JavaScript [Map] wrapper to allow use of observables. 
 * [Future Features] - Features coming soon
+
+-----------------
+
+## Installation
+
+Installing: 
+
+``` sh
+npm install --save rxjs-util-classes
+
+# or via yarn
+
+yarn add rxjs-util-classes
+```
+
+Importing:
+
+``` js
+import { ObservableMap } from 'rxjs-util-classes';
+
+// or 
+
+const { ObservableMap } = require('rxjs-util-classes');
+```
 
 -----------------
 
@@ -131,13 +156,14 @@ replayMap.delete('my-key');
 
 Add more features 
 
+[Installation]: #installation
 [Observable Maps]: #observable-maps
+[Future Features]: #future-features
+
 [ObservableMap]: #observablemap
 [BehaviorMap]: #behaviormap
 [ReplayMap]: #replaymap
 [Important Notes about ObservableMaps]: #important-notes-about-observablemaps
-
-[Future Features]: #future-features
 
 [map recipes]: docs/recipes/maps.md
 

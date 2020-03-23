@@ -17,7 +17,7 @@
 
 Ƭ **OptionValue**: *S extends typeof BehaviorSubject ? V : S extends typeof ReplaySubject ? number : undefined*
 
-*Defined in [interfaces.ts:25](https://github.com/djhouseknecht/rxjs-util-classes/blob/a214220/src/interfaces.ts#L25)*
+*Defined in [interfaces.ts:25](https://github.com/djhouseknecht/rxjs-util-classes/blob/a890826/src/interfaces.ts#L25)*
 
 Utility type to determine which option type to support based
  on [SupportedSubjectTypes](_interfaces_.md#supportedsubjecttypes)
@@ -28,7 +28,7 @@ ___
 
 Ƭ **SubjectType**: *S extends typeof BehaviorSubject ? BehaviorSubject<V> : S extends typeof ReplaySubject ? ReplaySubject<V> : Subject<V>*
 
-*Defined in [interfaces.ts:17](https://github.com/djhouseknecht/rxjs-util-classes/blob/a214220/src/interfaces.ts#L17)*
+*Defined in [interfaces.ts:17](https://github.com/djhouseknecht/rxjs-util-classes/blob/a890826/src/interfaces.ts#L17)*
 
 Utility type to determine the correct subject type to return based
  on [SupportedSubjectTypes](_interfaces_.md#supportedsubjecttypes)
@@ -39,7 +39,7 @@ ___
 
 Ƭ **SupportedKeyTypes**: *string | number | boolean*
 
-*Defined in [interfaces.ts:6](https://github.com/djhouseknecht/rxjs-util-classes/blob/a214220/src/interfaces.ts#L6)*
+*Defined in [interfaces.ts:6](https://github.com/djhouseknecht/rxjs-util-classes/blob/a890826/src/interfaces.ts#L6)*
 
 Supported key types for maps
 
@@ -49,6 +49,6 @@ ___
 
 Ƭ **SupportedSubjectTypes**: *typeof BehaviorSubject | typeof ReplaySubject | typeof Subject*
 
-*Defined in [interfaces.ts:11](https://github.com/djhouseknecht/rxjs-util-classes/blob/a214220/src/interfaces.ts#L11)*
+*Defined in [interfaces.ts:11](https://github.com/djhouseknecht/rxjs-util-classes/blob/a890826/src/interfaces.ts#L11)*
 
 Supported `Subject` types for maps
