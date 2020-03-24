@@ -1,6 +1,6 @@
 import { BaseMap } from './base-map';
 import { ReplaySubject } from 'rxjs';
-import { SupportedKeyTypes } from 'src/interfaces';
+import { SupportedKeyTypes } from '../interfaces';
 
 /**
  * Implementation of {@link BaseMap} that uses the `ReplaySubject` based `Observables`

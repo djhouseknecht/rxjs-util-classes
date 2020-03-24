@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 # [Unreleased]
 
+# [v1.1.3]
+
+### Fixed
+* Interface import in `ObservableMap` and `ReplayMap` that was throwing an 
+  error when being used by 3rd party applications
+
 # [v1.1.2]
 
 ### Changed
@@ -38,7 +44,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Initial release 
 * README
 
-[Unreleased]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.3...HEAD
+[v1.1.2]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.2...v1.13
 [v1.1.2]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.1...v1.1.2
 [v1.1.1]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.0.0...v1.1.0
