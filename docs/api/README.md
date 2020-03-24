@@ -12,6 +12,7 @@ Simple RxJS implementations for common classes used across many different types 
 
 * [Installation] - Install the package and basic imports
 * [Observable Maps] - Basic JavaScript [Map] wrapper to allow use of observables. 
+* [Base Store] - Dirt simple [redux](https://redux.js.org/) implementation built on RxJS
 * [Future Features] - Features coming soon
 
 -----------------
@@ -48,7 +49,9 @@ This is a wrapper around the native JavaScript [Map] except it returns observabl
 * [BehaviorMap] - uses RxJS [BehaviorSubject]
 * [ReplayMap] - uses RxJS [ReplaySubject]
 
-> See the [Maps API](docs/api/modules/_index_.md) and [Important Notes about ObservableMaps] for additional information
+> See the [Maps API](docs/api/classes/_maps_base_map_.basemap.md) and [Important Notes about ObservableMaps] for additional information
+
+> See [map recipes] for commom use cases.
 
 ### ObservableMap
 
@@ -140,12 +143,109 @@ replayMap.delete('my-key');
 // complete
 ```
 
-> See [map recipes] for commom use cases.
-
 #### Important Notes about ObservableMaps
 * `map.get$()` (or `map.get()` if using `BehaviorMap`)
   * This will _always_ return an Observable and _never_ return `undefined`. This is different than the standard JS Map class which 
     could return `undefined` if the value was not set. The reason for this because callers need something to subsribe to. 
+
+## Base Store
+
+This is a simple RxJS implementation of [redux](https://redux.js.org/) and state management. 
+
+* [BaseStore] - uses RxJS [BehaviorSubject] to distribute and manage application state
+
+> See the [Base Store API](docs/api/classes/_store_base_store_.basestore.md) for the full API
+
+> See [store recipes] for commom use cases.
+
+Redux is a very popular state management solution. The main concepts of redux-like state is that:
+
+* State in a central location (in the "store")
+* State can only be modified by "dispatching" events to the "store" that are allowed/configured
+
+This makes keeping track of state uniformed because the state is always in one location, and can 
+only be changed in ways the store allows. 
+
+### BaseStore
+
+**src/app-store.ts** _(pseudo file to show store implementation)_
+``` ts
+import { BaseStore } from 'rxjs-util-classes';
+
+export interface IUser {
+  username: string;
+  authToken: string;
+}
+
+export interface IAppState {
+  isLoading: boolean;
+  authenticatedUser?: IUser;
+  // any other state your app needs
+}
+
+const initialState: IAppState = {
+  isLoading: false,
+  authenticatedUser: undefined
+};
+
+/**
+ * Extend the BaseStore and expose methods for components/services 
+ *  to call to update the state
+ */
+class AppStore extends BaseStore<IAppState> {
+  constructor () {
+    super(initialState); // set the store's initial state
+  }
+
+  public setIsLoading (isLoading: boolean): void {
+    this._dispatch({ isLoading });
+  }
+
+  public setAuthenticatedUser (authenticatedUser?: IUser): void {
+    this._dispatch({ authenticatedUser });
+  }
+
+  // these methods are inherited from BaseStore
+  // getState(): IAppState
+  // getState$(): Observable<IAppState>
+}
+
+/* export a singleton instance of the store */
+export const store = new AppStore();
+```
+
+**src/example-component.ts** _(pseudo component that will authenticate the user and interact with the app's state)_
+
+``` ts
+import { store, IUser, IAppState } from './app-store';
+
+/**
+ * Function to mock an authentication task
+ */
+function authenticate () {
+  return new Promise(res => {
+    setTimeout(() => {
+      res({ username: 'bob-samuel', authToken: 'qwerty-123' });
+    }, 1000);
+  });
+}
+
+store.getState$().subscribe((appState: IAppState) => {
+  /* do something with the state as it changes; 
+    maybe show a spinner or the authenticatedUser's username */
+});
+
+/* authenticate to get the user */
+store.setIsLoading(true);
+authenticate()
+  .then((user: IUser) => {
+    /* here we set the store's state via the methods the 
+      store exposed */
+    store.setAuthenticatedUser(user);
+    store.setIsLoading(false);
+  })
+  .catch(err => store.setIsLoading(false));
+```
 
 ## Future Features
 * A redux-store implementation that is flexible and dynamic
@@ -158,6 +258,7 @@ Add more features
 
 [Installation]: #installation
 [Observable Maps]: #observable-maps
+[Base Store]: #base-store
 [Future Features]: #future-features
 
 [ObservableMap]: #observablemap
@@ -165,7 +266,10 @@ Add more features
 [ReplayMap]: #replaymap
 [Important Notes about ObservableMaps]: #important-notes-about-observablemaps
 
+[BaseStore]: #basestore
+
 [map recipes]: docs/recipes/maps.md
+[store recipes]: docs/recipes/store.md
 
 [dependabot]: https://dependabot.com
 [typedoc]: https://typedoc.org/guides/options/#options

@@ -6,11 +6,18 @@
 
 ### References
 
+* [BaseStore](_index_.md#basestore)
 * [BehaviorMap](_index_.md#behaviormap)
 * [ObservableMap](_index_.md#observablemap)
 * [ReplayMap](_index_.md#replaymap)
 
 ## References
+
+###  BaseStore
+
+• **BaseStore**:
+
+___
 
 ###  BehaviorMap
 
