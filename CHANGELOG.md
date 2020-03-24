@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 # [Unreleased]
 
+# [v2.0.0]
+
+### BREAKING CHANGE
+* **rxjs dependency:** moved rxjs to `peerDependencies` and will support `rxjs@^6.0.0`
+
+### Changed
+* **README:** updated install instructions
+
+### Added 
+* **BaseStore/recipe:** added a dynamic base-store example
 
 # [v1.2.0]
 
@@ -50,7 +60,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Initial release 
 * README
 
-[Unreleased]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v2.0.0...HEAD
+[v1.2.0]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.2.0...v2.0.0
 [v1.2.0]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.3...v1.2.0
 [v1.1.3]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.2...v1.1.3
 [v1.1.2]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.1...v1.1.2

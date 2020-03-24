@@ -32,7 +32,7 @@ BaseStore class to manage state in a unified location
 
 \+ **new BaseStore**(`initialState`: T): *[BaseStore](_store_base_store_.basestore.md)*
 
-*Defined in [store/base-store.ts:11](https://github.com/djhouseknecht/rxjs-util-classes/blob/2877608/src/store/base-store.ts#L11)*
+*Defined in [store/base-store.ts:11](https://github.com/djhouseknecht/rxjs-util-classes/blob/3c2051f/src/store/base-store.ts#L11)*
 
 Must be overridden. Takes in an initial state.
 
@@ -50,7 +50,7 @@ Name | Type | Description |
 
 ▸ **_dispatch**(`state`: Partial‹T›): *void*
 
-*Defined in [store/base-store.ts:68](https://github.com/djhouseknecht/rxjs-util-classes/blob/2877608/src/store/base-store.ts#L68)*
+*Defined in [store/base-store.ts:68](https://github.com/djhouseknecht/rxjs-util-classes/blob/3c2051f/src/store/base-store.ts#L68)*
 
 Change part of the state to the passed in value.
 
@@ -75,7 +75,7 @@ ___
 
 ▸ **destroy**(): *void*
 
-*Defined in [store/base-store.ts:43](https://github.com/djhouseknecht/rxjs-util-classes/blob/2877608/src/store/base-store.ts#L43)*
+*Defined in [store/base-store.ts:43](https://github.com/djhouseknecht/rxjs-util-classes/blob/3c2051f/src/store/base-store.ts#L43)*
 
 Destory the state and call `.complete()` on
  the state's underlying observable
@@ -91,7 +91,7 @@ ___
 
 ▸ **getState**(): *T*
 
-*Defined in [store/base-store.ts:32](https://github.com/djhouseknecht/rxjs-util-classes/blob/2877608/src/store/base-store.ts#L32)*
+*Defined in [store/base-store.ts:32](https://github.com/djhouseknecht/rxjs-util-classes/blob/3c2051f/src/store/base-store.ts#L32)*
 
 Get the state synchonously
 
@@ -103,7 +103,7 @@ ___
 
 ▸ **getState$**(): *Observable‹T›*
 
-*Defined in [store/base-store.ts:25](https://github.com/djhouseknecht/rxjs-util-classes/blob/2877608/src/store/base-store.ts#L25)*
+*Defined in [store/base-store.ts:25](https://github.com/djhouseknecht/rxjs-util-classes/blob/3c2051f/src/store/base-store.ts#L25)*
 
 Get the state as an observable
 
@@ -115,7 +115,7 @@ ___
 
 ▸ **hasDestroyed**(): *boolean*
 
-*Defined in [store/base-store.ts:52](https://github.com/djhouseknecht/rxjs-util-classes/blob/2877608/src/store/base-store.ts#L52)*
+*Defined in [store/base-store.ts:52](https://github.com/djhouseknecht/rxjs-util-classes/blob/3c2051f/src/store/base-store.ts#L52)*
 
 Check to see if the store has been destroyed.
  If it has been, it can no longer be used.
