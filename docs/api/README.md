@@ -12,21 +12,22 @@ Simple RxJS implementations for common classes used across many different types 
 
 * [Installation] - Install the package and basic imports
 * [Observable Maps] - Basic JavaScript [Map] wrapper to allow use of observables. 
-* [Base Store] - Dirt simple [redux](https://redux.js.org/) implementation built on RxJS
+* [Base Store] - Simple [Redux] implementation built on RxJS that is flexible and dynamic
 * [Future Features] - Features coming soon
+* [Contributing] 
 
 -----------------
 
 ## Installation
 
-Installing: 
+Install rxjs and rxjs-util-classes _(rxjs v6.x is required)_:
 
 ``` sh
-npm install --save rxjs-util-classes
+npm install --save rxjs rxjs-util-classes
 
 # or via yarn
 
-yarn add rxjs-util-classes
+yarn add rxjs rxjs-util-classes
 ```
 
 Importing:
@@ -150,21 +151,22 @@ replayMap.delete('my-key');
 
 ## Base Store
 
-This is a simple RxJS implementation of [redux](https://redux.js.org/) and state management. 
+This is a simple RxJS implementation of [Redux] and state management. 
 
 * [BaseStore] - uses RxJS [BehaviorSubject] to distribute and manage application state
 
-> See the [Base Store API](docs/api/classes/_store_base_store_.basestore.md) for the full API
+> * See the [Base Store API](docs/api/classes/_store_base_store_.basestore.md) for the full API
+> * See [store recipes] for commom use cases.
 
-> See [store recipes] for commom use cases.
-
-Redux is a very popular state management solution. The main concepts of redux-like state is that:
+[Redux] is a very popular state management solution. The main concepts of redux-like state is that:
 
 * State in a central location (in the "store")
 * State can only be modified by "dispatching" events to the "store" that are allowed/configured
 
 This makes keeping track of state uniformed because the state is always in one location, and can 
 only be changed in ways the store allows. 
+
+> One huge advantage of this implementation is its ability to have a **dyanmic store**. See the [Dynamic Store](docs/recipes/store.md#dynamic-store) recipe for further details and implementation. 
 
 ### BaseStore
 
@@ -248,18 +250,73 @@ authenticate()
 ```
 
 ## Future Features
-* A redux-store implementation that is flexible and dynamic
 * WildEmitter implementation
 * List Map for caching and watching changes on a list
 
-### TODO
+------------
 
-Add more features 
+## Contributing
+
+### Install
+
+``` sh
+# clone repo
+git clone https://github.com/djhouseknecht/rxjs-util-classes.git
+
+# move into directory
+cd ./rxjs-util-classes
+
+# install
+npm install
+```
+
+### Commits
+
+All commits must be compliant to [commitizen](https://github.com/commitizen/cz-cli)'s standard. Useful commit message
+tips can be found on angular.js' [DEVELOPER.md](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines). 
+
+``` sh
+# utility to format commit messages
+npm run commit
+```
+
+**If you are releasing a new version, make sure to update the [CHANGELOG.md](CHANGELOG.md)** 
+The changelog adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). 
+
+> Know what messages will trigger a release. Check [semantic-release defaults](https://github.com/semantic-release/commit-analyzer/blob/master/lib/default-release-rules.js) and any added to `./package.json#release`
+
+### Versioning & Deploying 
+
+Deploying is managed by [semantic-release](https://github.com/semantic-release/semantic-release). Messages
+must comply with [commitizen](https://github.com/commitizen/cz-cli) [see above](#commits). 
+
+### Testing & Linting
+Testing coverage must remain at 100% and all code must pass the linter. 
+
+``` sh
+# lint
+npm run lint 
+# npm run lint:fix # will fix some issues
+
+npm run test
+```
+
+### Building 
+
+``` sh
+npm run build
+```
+
+## TODO
+
+* Add dynamic state example for base-store
+* Add more features 
 
 [Installation]: #installation
 [Observable Maps]: #observable-maps
 [Base Store]: #base-store
 [Future Features]: #future-features
+[Contributing]: #contributing
 
 [ObservableMap]: #observablemap
 [BehaviorMap]: #behaviormap
@@ -273,6 +330,8 @@ Add more features
 
 [dependabot]: https://dependabot.com
 [typedoc]: https://typedoc.org/guides/options/#options
+[Redux]: https://redux.js.org/
+
 [Map]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
 [Subject]: https://rxjs-dev.firebaseapp.com/guide/subject
 [ReplaySubject]: https://rxjs-dev.firebaseapp.com/guide/subject#replaysubject

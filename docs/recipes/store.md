@@ -198,4 +198,259 @@ It will also allow for getter reuse of components.
 
 #### Application Files
 
-Todo: write theses 
+_\*This example is an Angular application, but the concepts are the framework agnostic._
+
+The following directory: 
+
+```
+.
+└── src
+    ├── chat
+    │   ├── chat.component.html
+    │   ├── chat.component.ts
+    │   └── chat.service.ts
+    ├── app.component.ts
+    ├── app.module.ts
+    └── models.ts
+```
+
+First, we will look at our models and app.component 
+
+**models.ts**
+``` ts
+/** user in a chat room*/
+export interface IUser {
+  name: string;
+  id: string;
+}
+
+/** chat message object */
+export interface IChatMessage {
+  roomId: string;
+  message: string;
+  fromUser: IUser;
+  timestamp: Date;
+}
+
+/** the state for a given chat room */
+export interface IChatRoomState {
+  roomId: string;
+  users: IUser[];
+  messages: IChatMessage[];
+}
+```
+
+**app.component.ts**
+``` ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  /* loop through all our chat rooms and 
+      pass in the roomId */
+  template: `
+    <app-chat *ngFor="let roomId of chatRooms" [roomId]="roomId"></app-chat>
+  `
+})
+export class AppComponent {
+  /* These are all the rooms the user is a part of.
+      In a real application, this would be in its own
+      service (or store). But for this example, we will
+      just assume the user is already a part of these rooms
+      when the application loads */
+  public chatRooms: string[] = [
+    'room-id-123',
+    'room-id-456',
+    'room-id-789'
+  ];
+}
+```
+
+Now we are going to look at our Chat Room Service. This service will manage all
+the chat room stores and dynamically create them as needed. 
+
+**chat.service.ts**
+``` ts
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BaseStore } from 'rxjs-util-classes';
+
+import { IChatRoomState, IChatMessage } from '../models';
+
+/**
+ * Create a private Chat Store only accessible by the 
+ *  ChatService. 
+ * This could be moved to a separate file, leaving it here for 
+ *  simplicity
+ */
+class ChatStore extends BaseStore<IChatRoomState> {
+  constructor (roomId: string) {
+    /* initialize default chat-room state */
+    super({ roomId, users: [], messages: [] });
+  }
+
+  /* =====================================
+   * expose methods for the service to use  
+   * ===================================== */
+
+  public sendMessage (message: IChatMessage): void {
+    /* add the message to the messages 
+      (we want to keep the state immutable, which is why we are copying) */
+    this._dispatch({ messages: [...this.getState().messages, message] });
+  }
+}
+
+@Injectable({ providedIn: 'root' })
+export class ChatService {
+  /* hold a map of all our chat room stores */
+  private rooms: Map<string, ChatStore> = new Map();
+
+  /* mock a WebSocket connection (to receive/send chats) */
+  private webSocket: WebSocket = new WebSocket('ws://my.website.com:443/chat');
+
+  constructor () {
+    /* mock WebSocket chat traffic */
+    this.webSocket.addEventListener('message', (event: MessageEvent) => {
+      event.preventDefault();
+      const chatData = event.data as IChatMessage;
+      /* if we have a room, send the message to it */
+      if (this.rooms.has(chatData.roomId)) {
+        this.getOrInitRoom(chatData.roomId).sendMessage(chatData);
+      }
+    });
+  }
+
+  /* =================================
+   * expose methods for the app to use  
+   * ================================= */
+
+  /**
+   * Expose a chat room state (synchronously)
+   */
+  public getRoomState (roomId: string): IChatRoomState {
+    return this.getOrInitRoom(roomId).getState();
+  }
+
+  /**
+   * Expose a single chat room state so multiple components
+   *  can all listen to the same state
+   */
+  public getRoomState$ (roomId: string): Observable<IChatRoomState> {
+    return this.getOrInitRoom(roomId).getState$();
+  }
+
+  /**
+   * Send a message to the server to join the room
+   *  and then return the room's state
+   */
+  public joinRoom$ (roomId: string): Observable<IChatRoomState> {
+    /* mock sending a message to the server to join a room */
+    this.webSocket.send(JSON.stringify({ joinRoom: true, roomId }));
+    /* return  */
+    return this.getRoomState$(roomId);
+  }
+
+  /**
+   * Send a message to a room
+   */
+  public sendMessage(message: IChatMessage): void {
+    /* mock sending a message to the server */
+    this.webSocket.send(JSON.stringify(message));
+
+    this.getOrInitRoom(message.roomId).sendMessage(message);
+  }
+
+  /**
+   * When we leave a chat room, destroy the 
+   *  associated store
+   */
+  public leaveRoom (roomId: string): void {
+    const store = this.getOrInitRoom(roomId);
+    /* this will call `.complete()` on the underlying observable */
+    store.destroy();
+    /* remove it from our local list of rooms */
+    this.rooms.delete(roomId);
+  }
+
+  /**
+   * This will get or create a chat store in our local map 
+   */
+  private getOrInitRoom (roomId: string): ChatStore {
+    if (!this.rooms.has(roomId)) {
+      this.rooms.set(roomId, new ChatStore(roomId));
+    }
+    return this.rooms.get(roomId);
+  }
+}
+```
+
+Finally, let's look at how components subscribe to the state for a specific chat room. 
+
+**chat.component.ts**
+
+``` ts
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { ChatService } from './chat.service';
+import { IChatRoomState } from '../models';
+
+@Component({
+  selector: 'app-chat',
+  templateUrl: './chat.component.html',
+})
+export class ChatComponent implements OnInit, OnDestroy {
+
+  @Input()
+  public roomId: string;
+
+  public state: IChatRoomState;
+
+  constructor (private chatService: ChatService) { }
+
+  ngOnInit () {
+    /* joining a room will subscribe to the room's state */
+    this.chatService.joinRoom$(this.roomId)
+      .subscribe(state => {
+        this.state = state;
+      });
+  }
+
+  sendMessage () {
+    /* send a message to the room */
+    this.chatService.sendMessage({
+      message: this.newMessage,
+      roomId: this.roomId,
+      timestamp: new Date(),
+      /* we would want to use our actual user */
+      fromUser: { name: 'Bob Smith', id: 'user-145' }
+    });
+    this.newMessage = '';
+  }
+
+
+  ngOnDestroy () {
+    /* leave the room when the component is destroyed */
+    this.chatService.leaveRoom(this.roomId);
+  }
+
+}
+```
+
+**chat.component.html**
+
+```html
+<h4>Chat Room {{state.roomId}}</h4>
+
+<div *ngFor="let messageObj of state.messages">
+  <p>From: {{messageObj.fromUser.name}}</p>
+  <p>{{messageObj.message}}</p>
+  <p>sent at: {{messageObj.timestamp}}</p>
+</div>
+
+<div>
+  <input type="text" [(ngModel)]="newMessage">
+  <button (click)="sendMessage()">Send Message</button>
+</div>
+```
+
+With this setup, another component could easily listen to a room's state changes 
+by calling `chatService.getRoomState$(roomId)`.

@@ -17,8 +17,10 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "rxjs": "^6.5.4",
     "tslib": "^1.11.1"
+  },
+  "peerDependencies": {
+    "rxjs": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -30,6 +32,7 @@
     "cz-conventional-changelog": "^3.1.0",
     "husky": "^4.2.1",
     "jest": "^25.1.0",
+    "rxjs": "^6.0.0",
     "semantic-release": "^17.0.2",
     "ts-jest": "^25.2.1",
     "tslint": "^6.1.0",
