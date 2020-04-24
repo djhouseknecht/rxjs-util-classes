@@ -1,0 +1,424 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>rxjs-util-classes</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">rxjs-util-classes</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>rxjs-util-classes</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<p><a href="https://travis-ci.org/djhouseknecht/rxjs-util-classes"><img src="https://travis-ci.org/djhouseknecht/rxjs-util-classes.svg?branch=master" alt="Build Status"></a>  <a href="https://codecov.io/gh/djhouseknecht/rxjs-util-classes"><img src="https://codecov.io/gh/djhouseknecht/rxjs-util-classes/branch/master/graph/badge.svg" alt="codecov"></a>  <a href="https://badge.fury.io/js/rxjs-util-classes"><img src="https://badge.fury.io/js/rxjs-util-classes.svg" alt="npm version"></a>  <a href="https://dependabot.com"><img src="https://flat.badgen.net/dependabot/djhouseknecht/rxjs-util-classes/?icon=dependabot" alt="dependabot-status"></a>  <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a>  <a href="http://commitizen.github.io/cz-cli/"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen friendly"></a> </p>
+				<a href="#rxjs-util-classes" id="rxjs-util-classes" style="color: inherit; text-decoration: none;">
+					<h1>RxJS-Util-Classes</h1>
+				</a>
+				<p>Simple RxJS implementations for common classes used across many different types of projects. Implementations include: redux-like store (for dynamic state management), rxjs maps, rxjs lists (useful for caching), and rxjs event emitters.</p>
+				<a href="#index" id="index" style="color: inherit; text-decoration: none;">
+					<h4>Index</h4>
+				</a>
+				<ul>
+					<li><a href="#installation">Installation</a> - Install the package and basic imports</li>
+					<li>Available Features<ul>
+							<li><a href="#observable-maps">Observable Maps</a> - Basic JavaScript <a href="https://developer.mozilla.org/en-US/https://djhouseknecht.github.io/rxjs-util-classes/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> wrapper to allow use of observables. </li>
+							<li><a href="#base-store">Base Store</a> - Simple <a href="https://redux.js.org/">Redux</a> implementation built on RxJS that is flexible and dynamic</li>
+						</ul>
+					</li>
+					<li><a href="#future-features">Future Features</a> - Features coming soon</li>
+					<li><a href="#contributing">Contributing</a> </li>
+				</ul>
+				<hr>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<p>Install rxjs and rxjs-util-classes <em>(rxjs v6.x is required)</em>:</p>
+				<pre><code class="language-sh">npm install --save rxjs rxjs-util-classes
+
+<span class="hljs-comment"># or via yarn</span>
+
+yarn add rxjs rxjs-util-classes</code></pre>
+				<p>Importing:</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { ObservableMap } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
+
+<span class="hljs-comment">// or </span>
+
+<span class="hljs-keyword">const</span> { ObservableMap } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'rxjs-util-classes'</span>);</code></pre>
+				<hr>
+				<a href="#observable-maps" id="observable-maps" style="color: inherit; text-decoration: none;">
+					<h1>Observable Maps</h1>
+				</a>
+				<p>This is a wrapper around the native JavaScript <a href="https://developer.mozilla.org/en-US/https://djhouseknecht.github.io/rxjs-util-classes/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> except it returns observables. There are three main map types: </p>
+				<ul>
+					<li><a href="#observablemap">ObservableMap</a> - uses RxJS <a href="https://rxjs-dev.firebaseapp.com/guide/subject">Subject</a></li>
+					<li><a href="#behaviormap">BehaviorMap</a> - uses RxJS <a href="https://rxjs-dev.firebaseapp.com/guide/subject#behaviorsubject">BehaviorSubject</a></li>
+					<li><a href="#replaymap">ReplayMap</a> - uses RxJS <a href="https://rxjs-dev.firebaseapp.com/guide/subject#replaysubject">ReplaySubject</a></li>
+				</ul>
+				<blockquote>
+					<p>See the <a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_maps_base_map_.basemap.html">Maps API</a> and <a href="#important-notes-about-observablemaps">Important Notes about ObservableMaps</a> for additional information</p>
+				</blockquote>
+				<blockquote>
+					<p>See <a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/recipes/maps.md">map recipes</a> for commom use cases.</p>
+				</blockquote>
+				<a href="#observablemap" id="observablemap" style="color: inherit; text-decoration: none;">
+					<h3>ObservableMap</h3>
+				</a>
+				<p>Uses the standard RxJS Subject so subscribers will only receive values emitted <em>after</em> they subscribe. (<a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_maps_observable_map_.observablemap.html">Full API</a>)</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { ObservableMap } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
+
+<span class="hljs-keyword">const</span> observableMap = <span class="hljs-keyword">new</span> ObservableMap&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;();
+
+observableMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'this value will not be received'</span>);
+
+observableMap.get$(<span class="hljs-string">'my-key'</span>).subscribe(
+  <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Value: '</span> + value),
+  <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error: '</span> + error),
+  <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'complete'</span>)
+);
+
+<span class="hljs-comment">// `.set()` will emit the value to all subscribers</span>
+observableMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'first-data'</span>);
+observableMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'second-data'</span>);
+
+<span class="hljs-comment">// delete calls `.complete()` to clean up </span>
+<span class="hljs-comment">// the observable</span>
+observableMap.delete(<span class="hljs-string">'my-key'</span>);
+
+<span class="hljs-comment">// OUTPUT:</span>
+<span class="hljs-comment">// Value: first-data</span>
+<span class="hljs-comment">// Value: second-data</span>
+<span class="hljs-comment">// complete</span></code></pre>
+				<a href="#behaviormap" id="behaviormap" style="color: inherit; text-decoration: none;">
+					<h3>BehaviorMap</h3>
+				</a>
+				<p>Uses the RxJS BehaviorSubject so subscribers will <em>always</em> receive the last emitted value. This class <em>requires</em> an initial value to construct all underlying BehaviorSubjects. (<a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_maps_behavior_map_.behaviormap.html">Full API</a>)</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { BehaviorMap } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
+
+<span class="hljs-keyword">const</span> behaviorMap = <span class="hljs-keyword">new</span> BehaviorMap&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-string">'initial-data'</span>);
+
+behaviorMap.get$(<span class="hljs-string">'my-key'</span>).subscribe(
+  <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Value: '</span> + value),
+  <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error: '</span> + error),
+  <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'complete'</span>)
+);
+
+behaviorMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'first-data'</span>);
+behaviorMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'second-data'</span>);
+
+<span class="hljs-comment">// emitError calls `.error()` which ends the observable stream</span>
+<span class="hljs-comment">//  it will also remove the mey-value from the map</span>
+behaviorMap.emitError(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'there was an error!'</span>);
+
+<span class="hljs-comment">// OUTPUT:</span>
+<span class="hljs-comment">// Value: initial-data</span>
+<span class="hljs-comment">// Value: first-data</span>
+<span class="hljs-comment">// Value: second-data</span>
+<span class="hljs-comment">// Error: there was an error!</span></code></pre>
+				<a href="#replaymap" id="replaymap" style="color: inherit; text-decoration: none;">
+					<h3>ReplayMap</h3>
+				</a>
+				<p>Uses the RxJS ReplaySubject so subscribers will receive the last <code>nth</code> emitted values. This class <em>requires</em> an initial replay number to construct all underlying ReplaySubject. (<a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_maps_replay_map_.replaymap.html">Full API</a>)</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { ReplayMap } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
+
+<span class="hljs-keyword">const</span> replayMap = <span class="hljs-keyword">new</span> ReplayMap&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-number">2</span>);
+
+replayMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'first-data'</span>);
+replayMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'second-data'</span>);
+replayMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'third-data'</span>);
+replayMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'fourth-data'</span>);
+
+replayMap.get$(<span class="hljs-string">'my-key'</span>).subscribe(
+  <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Value: '</span> + value),
+  <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error: '</span> + error),
+  <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'complete'</span>)
+);
+
+<span class="hljs-comment">// delete calls `.complete()` to clean up </span>
+<span class="hljs-comment">// the observable</span>
+replayMap.delete(<span class="hljs-string">'my-key'</span>);
+
+<span class="hljs-comment">// OUTPUT:</span>
+<span class="hljs-comment">// Value: third-data</span>
+<span class="hljs-comment">// Value: fourth-data</span>
+<span class="hljs-comment">// complete</span></code></pre>
+				<a href="#important-notes-about-observablemaps" id="important-notes-about-observablemaps" style="color: inherit; text-decoration: none;">
+					<h4>Important Notes about ObservableMaps</h4>
+				</a>
+				<ul>
+					<li><code>map.get$()</code> (or <code>map.get()</code> if using <code>BehaviorMap</code>)<ul>
+							<li>This will <em>always</em> return an Observable and <em>never</em> return <code>undefined</code>. This is different than the standard JS Map class which
+							could return <code>undefined</code> if the value was not set. The reason for this because callers need something to subsribe to. </li>
+						</ul>
+					</li>
+				</ul>
+				<a href="#base-store" id="base-store" style="color: inherit; text-decoration: none;">
+					<h1>Base Store</h1>
+				</a>
+				<p>This is a simple RxJS implementation of <a href="https://redux.js.org/">Redux</a> and state management. </p>
+				<ul>
+					<li><a href="#basestore">BaseStore</a> - uses RxJS <a href="https://rxjs-dev.firebaseapp.com/guide/subject#behaviorsubject">BehaviorSubject</a> to distribute and manage application state</li>
+				</ul>
+				<blockquote>
+					<ul>
+						<li>See the <a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_store_base_store_.basestore.html">Base Store API</a> for the full API</li>
+						<li>See <a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/recipes/store.md">store recipes</a> for commom use cases.</li>
+					</ul>
+				</blockquote>
+				<p><a href="https://redux.js.org/">Redux</a> is a very popular state management solution. The main concepts of redux-like state is that:</p>
+				<ul>
+					<li>State in a central location (in the &quot;store&quot;)</li>
+					<li>State can only be modified by &quot;dispatching&quot; events to the &quot;store&quot; that are allowed/configured</li>
+				</ul>
+				<p>This makes keeping track of state uniformed because the state is always in one location, and can
+				only be changed in ways the store allows. </p>
+				<blockquote>
+					<p>One huge advantage of this implementation is its ability to have a <strong>dyanmic store</strong>. See the <a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/recipes/store.html#dynamic-store">Dynamic Store</a> recipe for further details and implementation. </p>
+				</blockquote>
+				<a href="#basestore" id="basestore" style="color: inherit; text-decoration: none;">
+					<h3>BaseStore</h3>
+				</a>
+				<p><strong>src/app-store.ts</strong> <em>(pseudo file to show store implementation)</em></p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { BaseStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> IUser {
+  username: <span class="hljs-built_in">string</span>;
+  authToken: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> IAppState {
+  isLoading: <span class="hljs-built_in">boolean</span>;
+  authenticatedUser?: IUser;
+  <span class="hljs-comment">// any other state your app needs</span>
+}
+
+<span class="hljs-keyword">const</span> initialState: IAppState = {
+  isLoading: <span class="hljs-literal">false</span>,
+  authenticatedUser: <span class="hljs-literal">undefined</span>
+};
+
+<span class="hljs-comment">/**
+ * Extend the BaseStore and expose methods for components/services 
+ *  to call to update the state
+ */</span>
+<span class="hljs-keyword">class</span> AppStore <span class="hljs-keyword">extends</span> BaseStore&lt;IAppState&gt; {
+  <span class="hljs-keyword">constructor</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">super</span>(initialState); <span class="hljs-comment">// set the store's initial state</span>
+  }
+
+  <span class="hljs-keyword">public</span> setIsLoading (isLoading: <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>._dispatch({ isLoading });
+  }
+
+  <span class="hljs-keyword">public</span> setAuthenticatedUser (authenticatedUser?: IUser): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>._dispatch({ authenticatedUser });
+  }
+
+  <span class="hljs-comment">// these methods are inherited from BaseStore</span>
+  <span class="hljs-comment">// getState(): IAppState</span>
+  <span class="hljs-comment">// getState$(): Observable&lt;IAppState&gt;</span>
+}
+
+<span class="hljs-comment">/* export a singleton instance of the store */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> AppStore();</code></pre>
+				<p><strong>src/example-component.ts</strong> <em>(pseudo component that will authenticate the user and interact with the app&#39;s state)</em></p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { store, IUser, IAppState } <span class="hljs-keyword">from</span> <span class="hljs-string">'./app-store'</span>;
+
+<span class="hljs-comment">/**
+ * Function to mock an authentication task
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">authenticate</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      res({ username: <span class="hljs-string">'bob-samuel'</span>, authToken: <span class="hljs-string">'qwerty-123'</span> });
+    }, <span class="hljs-number">1000</span>);
+  });
+}
+
+store.getState$().subscribe(<span class="hljs-function">(<span class="hljs-params">appState: IAppState</span>) =&gt;</span> {
+  <span class="hljs-comment">/* do something with the state as it changes; 
+    maybe show a spinner or the authenticatedUser's username */</span>
+});
+
+<span class="hljs-comment">/* authenticate to get the user */</span>
+store.setIsLoading(<span class="hljs-literal">true</span>);
+authenticate()
+  .then(<span class="hljs-function">(<span class="hljs-params">user: IUser</span>) =&gt;</span> {
+    <span class="hljs-comment">/* here we set the store's state via the methods the 
+      store exposed */</span>
+    store.setAuthenticatedUser(user);
+    store.setIsLoading(<span class="hljs-literal">false</span>);
+  })
+  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> store.setIsLoading(<span class="hljs-literal">false</span>));</code></pre>
+				<a href="#future-features" id="future-features" style="color: inherit; text-decoration: none;">
+					<h2>Future Features</h2>
+				</a>
+				<ul>
+					<li>WildEmitter implementation</li>
+					<li>List Map for caching and watching changes on a list</li>
+				</ul>
+				<hr>
+				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+					<h2>Contributing</h2>
+				</a>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h3>Install</h3>
+				</a>
+				<pre><code class="language-sh"><span class="hljs-comment"># clone repo</span>
+git <span class="hljs-built_in">clone</span> https://github.com/djhouseknecht/rxjs-util-classes.git
+
+<span class="hljs-comment"># move into directory</span>
+<span class="hljs-built_in">cd</span> ./rxjs-util-classes
+
+<span class="hljs-comment"># install</span>
+npm install</code></pre>
+				<a href="#commits" id="commits" style="color: inherit; text-decoration: none;">
+					<h3>Commits</h3>
+				</a>
+				<p>All commits must be compliant to <a href="https://github.com/commitizen/cz-cli">commitizen</a>&#39;s standard. Useful commit message
+				tips can be found on angular.js&#39; <a href="https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines">DEVELOPER.md</a>. </p>
+				<pre><code class="language-sh"><span class="hljs-comment"># utility to format commit messages</span>
+npm run commit</code></pre>
+				<p><strong>If you are releasing a new version, make sure to update the <a href="CHANGELOG.md">CHANGELOG.md</a></strong>
+				The changelog adheres to <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>. </p>
+				<blockquote>
+					<p>Know what messages will trigger a release. Check <a href="https://github.com/semantic-release/commit-analyzer/blob/master/lib/default-release-rules.js">semantic-release defaults</a> and any added to <code>./package.json#release</code></p>
+				</blockquote>
+				<a href="#versioning-amp-deploying" id="versioning-amp-deploying" style="color: inherit; text-decoration: none;">
+					<h3>Versioning &amp; Deploying</h3>
+				</a>
+				<p>Deploying is managed by <a href="https://github.com/semantic-release/semantic-release">semantic-release</a>. Messages
+				must comply with <a href="https://github.com/commitizen/cz-cli">commitizen</a> <a href="#commits">see above</a>. </p>
+				<a href="#testing-amp-linting" id="testing-amp-linting" style="color: inherit; text-decoration: none;">
+					<h3>Testing &amp; Linting</h3>
+				</a>
+				<p>Testing coverage must remain at 100% and all code must pass the linter. </p>
+				<pre><code class="language-sh"><span class="hljs-comment"># lint</span>
+npm run lint 
+<span class="hljs-comment"># npm run lint:fix # will fix some issues</span>
+
+npm run <span class="hljs-built_in">test</span></code></pre>
+				<a href="#building" id="building" style="color: inherit; text-decoration: none;">
+					<h3>Building</h3>
+				</a>
+				<pre><code class="language-sh">npm run build</code></pre>
+				<a href="#todo" id="todo" style="color: inherit; text-decoration: none;">
+					<h2>TODO</h2>
+				</a>
+				<ul>
+					<li>Add dynamic state example for base-store</li>
+					<li>Add more features </li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_index_.html">&quot;index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_interfaces_.html">&quot;interfaces&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_maps_base_map_.html">&quot;maps/base-<wbr>map&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_maps_behavior_map_.html">&quot;maps/behavior-<wbr>map&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_maps_observable_map_.html">&quot;maps/observable-<wbr>map&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_maps_replay_map_.html">&quot;maps/replay-<wbr>map&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_store_base_store_.html">&quot;store/base-<wbr>store&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
