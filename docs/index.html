@@ -109,15 +109,15 @@ yarn add rxjs rxjs-util-classes</code></pre>
 					<li><a href="#replaymap">ReplayMap</a> - uses RxJS <a href="https://rxjs-dev.firebaseapp.com/guide/subject#replaysubject">ReplaySubject</a></li>
 				</ul>
 				<blockquote>
-					<p>See the <a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_maps_base_map_.basemap.html">Maps API</a> and <a href="#important-notes-about-observablemaps">Important Notes about ObservableMaps</a> for additional information</p>
+					<p>See the <a href="https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_base_map_.basemap.html">Maps API</a> and <a href="#important-notes-about-observablemaps">Important Notes about ObservableMaps</a> for additional information</p>
 				</blockquote>
 				<blockquote>
-					<p>See <a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/recipes/maps.md">map recipes</a> for commom use cases.</p>
+					<p>See <a href="https://github.com/djhouseknecht/rxjs-util-classes/tree/master/recipes/maps.md">map recipes</a> for commom use cases.</p>
 				</blockquote>
 				<a href="#observablemap" id="observablemap" style="color: inherit; text-decoration: none;">
 					<h3>ObservableMap</h3>
 				</a>
-				<p>Uses the standard RxJS Subject so subscribers will only receive values emitted <em>after</em> they subscribe. (<a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_maps_observable_map_.observablemap.html">Full API</a>)</p>
+				<p>Uses the standard RxJS Subject so subscribers will only receive values emitted <em>after</em> they subscribe. (<a href="https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_observable_map_.observablemap.html">Full API</a>)</p>
 				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { ObservableMap } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
 
 <span class="hljs-keyword">const</span> observableMap = <span class="hljs-keyword">new</span> ObservableMap&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;();
@@ -145,7 +145,7 @@ observableMap.delete(<span class="hljs-string">'my-key'</span>);
 				<a href="#behaviormap" id="behaviormap" style="color: inherit; text-decoration: none;">
 					<h3>BehaviorMap</h3>
 				</a>
-				<p>Uses the RxJS BehaviorSubject so subscribers will <em>always</em> receive the last emitted value. This class <em>requires</em> an initial value to construct all underlying BehaviorSubjects. (<a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_maps_behavior_map_.behaviormap.html">Full API</a>)</p>
+				<p>Uses the RxJS BehaviorSubject so subscribers will <em>always</em> receive the last emitted value. This class <em>requires</em> an initial value to construct all underlying BehaviorSubjects. (<a href="https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_behavior_map_.behaviormap.html">Full API</a>)</p>
 				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { BehaviorMap } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
 
 <span class="hljs-keyword">const</span> behaviorMap = <span class="hljs-keyword">new</span> BehaviorMap&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-string">'initial-data'</span>);
@@ -171,7 +171,7 @@ behaviorMap.emitError(<span class="hljs-string">'my-key'</span>, <span class="hl
 				<a href="#replaymap" id="replaymap" style="color: inherit; text-decoration: none;">
 					<h3>ReplayMap</h3>
 				</a>
-				<p>Uses the RxJS ReplaySubject so subscribers will receive the last <code>nth</code> emitted values. This class <em>requires</em> an initial replay number to construct all underlying ReplaySubject. (<a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_maps_replay_map_.replaymap.html">Full API</a>)</p>
+				<p>Uses the RxJS ReplaySubject so subscribers will receive the last <code>nth</code> emitted values. This class <em>requires</em> an initial replay number to construct all underlying ReplaySubject. (<a href="https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_replay_map_.replaymap.html">Full API</a>)</p>
 				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { ReplayMap } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
 
 <span class="hljs-keyword">const</span> replayMap = <span class="hljs-keyword">new</span> ReplayMap&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-number">2</span>);
@@ -214,8 +214,8 @@ replayMap.delete(<span class="hljs-string">'my-key'</span>);
 				</ul>
 				<blockquote>
 					<ul>
-						<li>See the <a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_store_base_store_.basestore.html">Base Store API</a> for the full API</li>
-						<li>See <a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/recipes/store.md">store recipes</a> for commom use cases.</li>
+						<li>See the <a href="https://djhouseknecht.github.io/rxjs-util-classes/classes/_store_base_store_.basestore.html">Base Store API</a> for the full API</li>
+						<li>See <a href="https://github.com/djhouseknecht/rxjs-util-classes/tree/master/recipes/store.md">store recipes</a> for commom use cases.</li>
 					</ul>
 				</blockquote>
 				<p><a href="https://redux.js.org/">Redux</a> is a very popular state management solution. The main concepts of redux-like state is that:</p>
@@ -226,7 +226,7 @@ replayMap.delete(<span class="hljs-string">'my-key'</span>);
 				<p>This makes keeping track of state uniformed because the state is always in one location, and can
 				only be changed in ways the store allows. </p>
 				<blockquote>
-					<p>One huge advantage of this implementation is its ability to have a <strong>dyanmic store</strong>. See the <a href="https://djhouseknecht.github.io/rxjs-util-classes/docs/recipes/store.html#dynamic-store">Dynamic Store</a> recipe for further details and implementation. </p>
+					<p>One huge advantage of this implementation is its ability to have a <strong>dyanmic store</strong>. See the <a href="https://github.com/djhouseknecht/rxjs-util-classes/tree/master/recipes/store.md#dynamic-store">Dynamic Store</a> recipe for further details and implementation. </p>
 				</blockquote>
 				<a href="#basestore" id="basestore" style="color: inherit; text-decoration: none;">
 					<h3>BaseStore</h3>

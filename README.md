@@ -47,13 +47,13 @@ This is a wrapper around the native JavaScript [Map] except it returns observabl
 * [BehaviorMap] - uses RxJS [BehaviorSubject]
 * [ReplayMap] - uses RxJS [ReplaySubject]
 
-> See the [Maps API](https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_maps_base_map_.basemap.html) and [Important Notes about ObservableMaps] for additional information
+> See the [Maps API](https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_base_map_.basemap.html) and [Important Notes about ObservableMaps] for additional information
 
 > See [map recipes] for commom use cases.
 
 ### ObservableMap
 
-Uses the standard RxJS Subject so subscribers will only receive values emitted _after_ they subscribe. ([Full API](https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_maps_observable_map_.observablemap.html))
+Uses the standard RxJS Subject so subscribers will only receive values emitted _after_ they subscribe. ([Full API](https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_observable_map_.observablemap.html))
 
 ``` ts
 import { ObservableMap } from 'rxjs-util-classes';
@@ -84,7 +84,7 @@ observableMap.delete('my-key');
 
 ### BehaviorMap
 
-Uses the RxJS BehaviorSubject so subscribers will _always_ receive the last emitted value. This class _requires_ an initial value to construct all underlying BehaviorSubjects. ([Full API](https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_maps_behavior_map_.behaviormap.html))
+Uses the RxJS BehaviorSubject so subscribers will _always_ receive the last emitted value. This class _requires_ an initial value to construct all underlying BehaviorSubjects. ([Full API](https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_behavior_map_.behaviormap.html))
 
 ``` ts
 import { BehaviorMap } from 'rxjs-util-classes';
@@ -113,7 +113,7 @@ behaviorMap.emitError('my-key', 'there was an error!');
 
 ### ReplayMap
 
-Uses the RxJS ReplaySubject so subscribers will receive the last `nth` emitted values. This class _requires_ an initial replay number to construct all underlying ReplaySubject. ([Full API](https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_maps_replay_map_.replaymap.html))
+Uses the RxJS ReplaySubject so subscribers will receive the last `nth` emitted values. This class _requires_ an initial replay number to construct all underlying ReplaySubject. ([Full API](https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_replay_map_.replaymap.html))
 
 
 ``` ts
@@ -154,7 +154,7 @@ This is a simple RxJS implementation of [Redux] and state management.
 
 * [BaseStore] - uses RxJS [BehaviorSubject] to distribute and manage application state
 
-> * See the [Base Store API](https://djhouseknecht.github.io/rxjs-util-classes/docs/api/classes/_store_base_store_.basestore.html) for the full API
+> * See the [Base Store API](https://djhouseknecht.github.io/rxjs-util-classes/classes/_store_base_store_.basestore.html) for the full API
 > * See [store recipes] for commom use cases.
 
 [Redux] is a very popular state management solution. The main concepts of redux-like state is that:
