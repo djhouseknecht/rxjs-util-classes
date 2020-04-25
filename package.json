@@ -11,7 +11,7 @@
     "lint": "tslint --project . --config tslint.json",
     "lint:fix": "tslint --project . --config tslint.json --fix",
     "build": "tsc --project .",
-    "doc": "typedoc --options typedoc.config.js",
+    "doc": "typedoc --options typedoc.config.js && touch ./docs/.nojekyll",
     "commit": "git-cz",
     "codecov": "codecov",
     "semantic-release": "semantic-release"
@@ -46,7 +46,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
+      "pre-commit": "npm run lint && npm run doc && git add ./docs",
       "pre-push": "npm run lint && npm run test"
     }
   },

@@ -111,6 +111,15 @@ export abstract class BaseMap<K extends SupportedKeyTypes, V extends any, S exte
   }
 
   /**
+   * Get the observable for the specified key.
+   *
+   * @param key key to retrieve
+   */
+  public get$ (key: K): Observable<V> {
+    return this._getOrInit$(key).asObservable();
+  }
+
+  /**
    * Will call the function for each observable-key value in the map.
    *
    * @param callbackfn function to execute on the maps key-value
@@ -119,15 +128,6 @@ export abstract class BaseMap<K extends SupportedKeyTypes, V extends any, S exte
     this._map.forEach((_value, _key) => {
       callbackfn(_value.asObservable(), _key);
     });
-  }
-
-  /**
-   * Get the observable for the specified key.
-   *
-   * @param key key to retrieve
-   */
-  public get$ (key: K): Observable<V> {
-    return this._getOrInit$(key).asObservable();
   }
 
   /**

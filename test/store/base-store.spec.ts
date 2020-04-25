@@ -42,20 +42,29 @@ describe('BaseStore', () => {
     });
   });
 
-  describe('_dispatch()', () => {
+  describe('dispatch()', () => {
     test('should throw an error if store has already been destroyed', () => {
       store['__hasDestroyed'] = true;
-      expect(() => store['_dispatch']({})).toThrow(/Cannot dispatch/);
+      expect(() => store['dispatch']({})).toThrow(/Cannot dispatch/);
     });
 
     test('should change to the new state', () => {
       const newUser = 'jim-bobby';
 
-      store['_dispatch']({ isLoading: true });
+      store['dispatch']({ isLoading: true });
       expect(store.getState()).toEqual({ user: USER, isLoading: true });
 
-      store['_dispatch']({ user: newUser });
+      store['dispatch']({ user: newUser });
       expect(store.getState()).toEqual({ user: newUser, isLoading: true });
+    });
+  });
+
+  describe('_dispatch()', () => {
+    test('should call through to `dispatch`', () => {
+      const spy = jest.spyOn(store, 'dispatch' as any);
+      const newState = { isLoading: false };
+      store['_dispatch'](newState);
+      expect(spy).toHaveBeenCalledWith(newState);
     });
   });
 

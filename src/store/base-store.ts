@@ -65,11 +65,18 @@ export abstract class BaseStore<T> {
    *
    * @param state partial state to change
    */
-  protected _dispatch (state: Partial<T>): void {
+  protected dispatch (state: Partial<T>): void {
     if (this.__hasDestroyed) {
       throw new Error('Cannot dispatch for BaseState objects that have already destroyed');
     }
     this.__state.next({ ...this.__state.getValue(), ...state });
+  }
+
+  /**
+   * @deprecated use `dispatch` instead
+   */
+  protected _dispatch (state: Partial<T>): void {
+    this.dispatch(state);
   }
 
 }

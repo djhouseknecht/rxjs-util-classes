@@ -46,6 +46,7 @@ This is a wrapper around the native JavaScript [Map] except it returns observabl
 * [ObservableMap] - uses RxJS [Subject]
 * [BehaviorMap] - uses RxJS [BehaviorSubject]
 * [ReplayMap] - uses RxJS [ReplaySubject]
+  * [Available Map API methods] - API methods for each map class
 
 > See the [Maps API](https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_base_map_.basemap.html) and [Important Notes about ObservableMaps] for additional information
 
@@ -148,11 +149,53 @@ replayMap.delete('my-key');
     could return `undefined` if the value was not set. The reason for this because callers need something to subsribe to. 
 
 
+
+### Available Map API methods
+
+The [ObservableMap], [BehaviorMap], & [ReplayMap] all share the same methods. The only exception is the `constructors` _and_ `BehaviorMap` has some additional synchornous methods. Any method that returns an observable will following the standard practice of ending with a `$`. All methods listed are `public`
+
+> See the [Maps API](https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_base_map_.basemap.html) for more details
+
+`**K**` = generic type defined as map keys (`string | number | boolean`)
+
+`**V**` = generic type defined as map value (`any`)
+
+##### Differences in Constructors
+
+* `new ObservableMap<K, V>()` - blank constructor. All underlying observables will be constructed with the standard [Subject].
+* `new ReplayMap<K, V>(relayCount: number)` - number of replays to share. Number passed in will be passed to all underlying [ReplaySubject]s
+* `new BehaviorMap<K, V>(initialValue: V)` - initial value to start each observable with. Value will be passed into each underlying [BehaviorSubject] 
+
+##### Methods available to all Maps
+
+* `size` - value of the current size of the underlying `Map`
+* `has(key: K): boolean` - returns if a given key exists
+* `set(key: K, value: V): this` - emits a value on the given key's observable. It will create an observable for the key if there is not already one.
+* **`get$ (key: K): Observable<V>`** - returns the observable for a given key. It will create an observable for the key if there is not already one _(meaning this will never return `falsy`).
+* `emitError(key: K, error: any): this` - calls `error()` on the given key's underlying subject. Emiting an error on an observable will terminate that observable. It will create an observable for the key if there is not already one. It will then call `delete(key)` to remove the key/value from the underlying `Map`.
+* `clear(): void` - will clear out the underlying `Map` of all key/value pairs. It will call `complete()` on all observables
+* `delete(key: K): boolean` - returns `false` if the key did not exist. Returns `true` is the key did exists. It then calls `complete()` on the observable and removes that key/value pair from the underlying `Map`
+* `keys(): IterableIterator<K>` - returns an iterable iterator for the underlying `Map`'s keys
+* `forEach$(callbackfn: (value: Observable<V>, key: K) => void): void` - takes a callback function that will be applied to all the underlying `Map`'s _observables_
+* `entries$ (): IterableIterator<[K, Observable<V>]>` - returns an iterable iterator over key/value pairs of the underlying `Map` where the value is the key's _observable_
+* `values$ (): IterableIterator<Observable<V>>` - returns an iterable iterator over the underlying `Map`'s values as _observables_
+
+##### Methods only available on `BehaviorMap`
+
+Because Behavior Subjects keep their last value, we can interact with that value synchronously. 
+
+* `get(key: K): V` - returns the current value of a given key. It will create an observable for the key if there is not already one which will return the `initialValue` passed into the constructor.
+* `forEach (callbackfn: (value: V, key: K) => void): void` - takes a callback function that will be applied to all the underlying `Map`'s _observables values_
+* `values (): IterableIterator<V>` - returns an iterable iterator over the underlying `Map`'s current _observable values_ 
+* `entries (): IterableIterator<[K, V]>` - returns an iterable iterator over key/value pairs of the underlying `Map` where the value is the key's _current observable value_
+
 # Base Store
 
 This is a simple RxJS implementation of [Redux] and state management. 
 
 * [BaseStore] - uses RxJS [BehaviorSubject] to distribute and manage application state
+  * [Available BaseStore API methods]
+
 
 > * See the [Base Store API](https://djhouseknecht.github.io/rxjs-util-classes/classes/_store_base_store_.basestore.html) for the full API
 > * See [store recipes] for commom use cases.
@@ -248,14 +291,25 @@ authenticate()
   .catch(err => store.setIsLoading(false));
 ```
 
+### Available BaseStore API methods
 
-## Future Features
+`BaseStore` is an abstract class and must be extended. 
+
+`**T**` = generic type defined as the state type (`any`)
+
+* `protected constructor (initialState: T)` - construct with the intial state of the store. Must be called from an extending class
+* `public getState$ (): Observable<T>` - returns an observable of the store's state. Underlying implementation uses a BehaviorSubject so this call will always receive the current state
+* `public getState (): T` - returns the current state synchronously
+* `public destroy (): void` - calls `complete()` on the underlying BehaviorSubject. **Once a store has destroyed, it can no longer be used**
+* `protected dispatch (state: Partial<T>): void` - updates the state with the passed in state then calls `next()` on the underlying BehaviorSubject. _This will do a shallow copy of the state using the spread operator (`...`). This is to keep state immutable._
+
+# Future Features
 * WildEmitter implementation
 * List Map for caching and watching changes on a list
 
 ------------
 
-## Contributing
+# Contributing
 
 ### Install
 
@@ -311,7 +365,6 @@ npm run build
 
 ## TODO
 
-* Add dynamic state example for base-store
 * Add more features 
 
 [Installation]: #installation
@@ -323,9 +376,11 @@ npm run build
 [ObservableMap]: #observablemap
 [BehaviorMap]: #behaviormap
 [ReplayMap]: #replaymap
-[Important Notes about ObservableMaps]: #important-notes-about-observablemaps
+  [Available Map API methods]: #available-map-api-methods
+  [Important Notes about ObservableMaps]: #important-notes-about-observablemaps
 
 [BaseStore]: #basestore
+  [Available BaseStore API methods]: #available-basestore-api-methods
 
 [map recipes]: https://github.com/djhouseknecht/rxjs-util-classes/tree/master/recipes/maps.md
 [store recipes]: https://github.com/djhouseknecht/rxjs-util-classes/tree/master/recipes/store.md

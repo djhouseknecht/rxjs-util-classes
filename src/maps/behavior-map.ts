@@ -39,7 +39,7 @@ export class BehaviorMap<K extends SupportedKeyTypes, V extends any> extends Bas
   /**
    * Get the map's ovservable values synchronously
    */
-  public *values (): IterableIterator<V> {
+  public * values (): IterableIterator<V> {
     for (const value of this._map.values()) {
       yield value.getValue();
     }
@@ -48,7 +48,7 @@ export class BehaviorMap<K extends SupportedKeyTypes, V extends any> extends Bas
   /**
    * Get the map's entries as key-value synchronously
    */
-  public *entries (): IterableIterator<[K, V]> {
+  public * entries (): IterableIterator<[K, V]> {
     for (const [key, value] of this._map.entries()) {
       yield [key, value.getValue()];
     }

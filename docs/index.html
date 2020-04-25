@@ -106,7 +106,10 @@ yarn add rxjs rxjs-util-classes</code></pre>
 				<ul>
 					<li><a href="#observablemap">ObservableMap</a> - uses RxJS <a href="https://rxjs-dev.firebaseapp.com/guide/subject">Subject</a></li>
 					<li><a href="#behaviormap">BehaviorMap</a> - uses RxJS <a href="https://rxjs-dev.firebaseapp.com/guide/subject#behaviorsubject">BehaviorSubject</a></li>
-					<li><a href="#replaymap">ReplayMap</a> - uses RxJS <a href="https://rxjs-dev.firebaseapp.com/guide/subject#replaysubject">ReplaySubject</a></li>
+					<li><a href="#replaymap">ReplayMap</a> - uses RxJS <a href="https://rxjs-dev.firebaseapp.com/guide/subject#replaysubject">ReplaySubject</a><ul>
+							<li><a href="#available-map-api-methods">Available Map API methods</a> - API methods for each map class</li>
+						</ul>
+					</li>
 				</ul>
 				<blockquote>
 					<p>See the <a href="https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_base_map_.basemap.html">Maps API</a> and <a href="#important-notes-about-observablemaps">Important Notes about ObservableMaps</a> for additional information</p>
@@ -205,12 +208,58 @@ replayMap.delete(<span class="hljs-string">'my-key'</span>);
 						</ul>
 					</li>
 				</ul>
+				<a href="#available-map-api-methods" id="available-map-api-methods" style="color: inherit; text-decoration: none;">
+					<h3>Available Map API methods</h3>
+				</a>
+				<p>The <a href="#observablemap">ObservableMap</a>, <a href="#behaviormap">BehaviorMap</a>, &amp; <a href="#replaymap">ReplayMap</a> all share the same methods. The only exception is the <code>constructors</code> <em>and</em> <code>BehaviorMap</code> has some additional synchornous methods. Any method that returns an observable will following the standard practice of ending with a <code>$</code>. All methods listed are <code>public</code></p>
+				<blockquote>
+					<p>See the <a href="https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_base_map_.basemap.html">Maps API</a> for more details</p>
+				</blockquote>
+				<p><code>**K**</code> = generic type defined as map keys (<code>string | number | boolean</code>)</p>
+				<p><code>**V**</code> = generic type defined as map value (<code>any</code>)</p>
+				<a href="#differences-in-constructors" id="differences-in-constructors" style="color: inherit; text-decoration: none;">
+					<h5>Differences in Constructors</h5>
+				</a>
+				<ul>
+					<li><code>new ObservableMap&lt;K, V&gt;()</code> - blank constructor. All underlying observables will be constructed with the standard <a href="https://rxjs-dev.firebaseapp.com/guide/subject">Subject</a>.</li>
+					<li><code>new ReplayMap&lt;K, V&gt;(relayCount: number)</code> - number of replays to share. Number passed in will be passed to all underlying <a href="https://rxjs-dev.firebaseapp.com/guide/subject#replaysubject">ReplaySubject</a>s</li>
+					<li><code>new BehaviorMap&lt;K, V&gt;(initialValue: V)</code> - initial value to start each observable with. Value will be passed into each underlying <a href="https://rxjs-dev.firebaseapp.com/guide/subject#behaviorsubject">BehaviorSubject</a> </li>
+				</ul>
+				<a href="#methods-available-to-all-maps" id="methods-available-to-all-maps" style="color: inherit; text-decoration: none;">
+					<h5>Methods available to all Maps</h5>
+				</a>
+				<ul>
+					<li><code>size</code> - value of the current size of the underlying <code>Map</code></li>
+					<li><code>has(key: K): boolean</code> - returns if a given key exists</li>
+					<li><code>set(key: K, value: V): this</code> - emits a value on the given key&#39;s observable. It will create an observable for the key if there is not already one.</li>
+					<li><strong><code>get$ (key: K): Observable&lt;V&gt;</code></strong> - returns the observable for a given key. It will create an observable for the key if there is not already one _(meaning this will never return <code>falsy</code>).</li>
+					<li><code>emitError(key: K, error: any): this</code> - calls <code>error()</code> on the given key&#39;s underlying subject. Emiting an error on an observable will terminate that observable. It will create an observable for the key if there is not already one. It will then call <code>delete(key)</code> to remove the key/value from the underlying <code>Map</code>.</li>
+					<li><code>clear(): void</code> - will clear out the underlying <code>Map</code> of all key/value pairs. It will call <code>complete()</code> on all observables</li>
+					<li><code>delete(key: K): boolean</code> - returns <code>false</code> if the key did not exist. Returns <code>true</code> is the key did exists. It then calls <code>complete()</code> on the observable and removes that key/value pair from the underlying <code>Map</code></li>
+					<li><code>keys(): IterableIterator&lt;K&gt;</code> - returns an iterable iterator for the underlying <code>Map</code>&#39;s keys</li>
+					<li><code>forEach$(callbackfn: (value: Observable&lt;V&gt;, key: K) =&gt; void): void</code> - takes a callback function that will be applied to all the underlying <code>Map</code>&#39;s <em>observables</em></li>
+					<li><code>entries$ (): IterableIterator&lt;[K, Observable&lt;V&gt;]&gt;</code> - returns an iterable iterator over key/value pairs of the underlying <code>Map</code> where the value is the key&#39;s <em>observable</em></li>
+					<li><code>values$ (): IterableIterator&lt;Observable&lt;V&gt;&gt;</code> - returns an iterable iterator over the underlying <code>Map</code>&#39;s values as <em>observables</em></li>
+				</ul>
+				<a href="#methods-only-available-on-codebehaviormapcode" id="methods-only-available-on-codebehaviormapcode" style="color: inherit; text-decoration: none;">
+					<h5>Methods only available on <code>BehaviorMap</code></h5>
+				</a>
+				<p>Because Behavior Subjects keep their last value, we can interact with that value synchronously. </p>
+				<ul>
+					<li><code>get(key: K): V</code> - returns the current value of a given key. It will create an observable for the key if there is not already one which will return the <code>initialValue</code> passed into the constructor.</li>
+					<li><code>forEach (callbackfn: (value: V, key: K) =&gt; void): void</code> - takes a callback function that will be applied to all the underlying <code>Map</code>&#39;s <em>observables values</em></li>
+					<li><code>values (): IterableIterator&lt;V&gt;</code> - returns an iterable iterator over the underlying <code>Map</code>&#39;s current <em>observable values</em> </li>
+					<li><code>entries (): IterableIterator&lt;[K, V]&gt;</code> - returns an iterable iterator over key/value pairs of the underlying <code>Map</code> where the value is the key&#39;s <em>current observable value</em></li>
+				</ul>
 				<a href="#base-store" id="base-store" style="color: inherit; text-decoration: none;">
 					<h1>Base Store</h1>
 				</a>
 				<p>This is a simple RxJS implementation of <a href="https://redux.js.org/">Redux</a> and state management. </p>
 				<ul>
-					<li><a href="#basestore">BaseStore</a> - uses RxJS <a href="https://rxjs-dev.firebaseapp.com/guide/subject#behaviorsubject">BehaviorSubject</a> to distribute and manage application state</li>
+					<li><a href="#basestore">BaseStore</a> - uses RxJS <a href="https://rxjs-dev.firebaseapp.com/guide/subject#behaviorsubject">BehaviorSubject</a> to distribute and manage application state<ul>
+							<li><a href="#available-basestore-api-methods">Available BaseStore API methods</a></li>
+						</ul>
+					</li>
 				</ul>
 				<blockquote>
 					<ul>
@@ -303,8 +352,20 @@ authenticate()
     store.setIsLoading(<span class="hljs-literal">false</span>);
   })
   .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> store.setIsLoading(<span class="hljs-literal">false</span>));</code></pre>
+				<a href="#available-basestore-api-methods" id="available-basestore-api-methods" style="color: inherit; text-decoration: none;">
+					<h3>Available BaseStore API methods</h3>
+				</a>
+				<p><code>BaseStore</code> is an abstract class and must be extended. </p>
+				<p><code>**T**</code> = generic type defined as the state type (<code>any</code>)</p>
+				<ul>
+					<li><code>protected constructor (initialState: T)</code> - construct with the intial state of the store. Must be called from an extending class</li>
+					<li><code>public getState$ (): Observable&lt;T&gt;</code> - returns an observable of the store&#39;s state. Underlying implementation uses a BehaviorSubject so this call will always receive the current state</li>
+					<li><code>public getState (): T</code> - returns the current state synchronously</li>
+					<li><code>public destroy (): void</code> - calls <code>complete()</code> on the underlying BehaviorSubject. <strong>Once a store has destroyed, it can no longer be used</strong></li>
+					<li><code>protected dispatch (state: Partial&lt;T&gt;): void</code> - updates the state with the passed in state then calls <code>next()</code> on the underlying BehaviorSubject. <em>This will do a shallow copy of the state using the spread operator (<code>...</code>). This is to keep state immutable.</em></li>
+				</ul>
 				<a href="#future-features" id="future-features" style="color: inherit; text-decoration: none;">
-					<h2>Future Features</h2>
+					<h1>Future Features</h1>
 				</a>
 				<ul>
 					<li>WildEmitter implementation</li>
@@ -312,7 +373,7 @@ authenticate()
 				</ul>
 				<hr>
 				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
-					<h2>Contributing</h2>
+					<h1>Contributing</h1>
 				</a>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
 					<h3>Install</h3>
@@ -359,7 +420,6 @@ npm run <span class="hljs-built_in">test</span></code></pre>
 					<h2>TODO</h2>
 				</a>
 				<ul>
-					<li>Add dynamic state example for base-store</li>
 					<li>Add more features </li>
 				</ul>
 			</div>

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 # [Unreleased]
 
+# [v2.0.1] - 2020-04-25
+### Deprecated
+* Use `dispatch(state)` instead of `_dispatch(state)`
+
+### Changed
+* Update README doc with all API methods for maps and store
+
 # [v2.0.0]
 
 ### BREAKING CHANGE
@@ -60,7 +67,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Initial release 
 * README
 
-[Unreleased]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v2.0.1...HEAD
+[v2.0.1]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v2.0.0...v2.0.1
 [v2.0.0]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.2.0...v2.0.0
 [v1.2.0]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.3...v1.2.0
 [v1.1.3]: https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.2...v1.1.3
