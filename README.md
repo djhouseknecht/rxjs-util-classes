@@ -156,9 +156,9 @@ The [ObservableMap], [BehaviorMap], & [ReplayMap] all share the same methods. Th
 
 > See the [Maps API](https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_base_map_.basemap.html) for more details
 
-`**K**` = generic type defined as map keys (`string | number | boolean`)
+**`K`** = generic type defined as map keys (`string | number | boolean`)
 
-`**V**` = generic type defined as map value (`any`)
+**`V`** = generic type defined as map value (`any`)
 
 ##### Differences in Constructors
 
@@ -242,11 +242,11 @@ class AppStore extends BaseStore<IAppState> {
   }
 
   public setIsLoading (isLoading: boolean): void {
-    this._dispatch({ isLoading });
+    this.dispatch({ isLoading });
   }
 
   public setAuthenticatedUser (authenticatedUser?: IUser): void {
-    this._dispatch({ authenticatedUser });
+    this.dispatch({ authenticatedUser });
   }
 
   // these methods are inherited from BaseStore
@@ -295,7 +295,7 @@ authenticate()
 
 `BaseStore` is an abstract class and must be extended. 
 
-`**T**` = generic type defined as the state type (`any`)
+**`T`** = generic type defined as the state type (`any`)
 
 * `protected constructor (initialState: T)` - construct with the intial state of the store. Must be called from an extending class
 * `public getState$ (): Observable<T>` - returns an observable of the store's state. Underlying implementation uses a BehaviorSubject so this call will always receive the current state

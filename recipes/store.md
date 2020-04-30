@@ -59,11 +59,11 @@ export class AppStore extends BaseStore<IAppState> {
     ability to change the app's state */
     
   public setIsLoading (isLoading: boolean): void {
-    this._dispatch({ isLoading });
+    this.dispatch({ isLoading });
   }
 
   public setTodos (todos: ITodo[]): void {
-    this._dispatch({ todos });
+    this.dispatch({ todos });
   }
 
   public deleteTodo (todo: ITodo): void {
@@ -296,7 +296,7 @@ class ChatStore extends BaseStore<IChatRoomState> {
   public sendMessage (message: IChatMessage): void {
     /* add the message to the messages 
       (we want to keep the state immutable, which is why we are copying) */
-    this._dispatch({ messages: [...this.getState().messages, message] });
+    this.dispatch({ messages: [...this.getState().messages, message] });
   }
 }
 
