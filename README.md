@@ -295,13 +295,16 @@ authenticate()
 
 `BaseStore` is an abstract class and must be extended. 
 
-**`T`** = generic type defined as the state type (`any`)
+**`T`** = generic type defined as the state type (`{ [key: string]: any }`)
+**`WithPreviousState<T>`** = generic type defined as the state type (`T & { __previousState: T }` where `T = { [key: string]: any }`)
 
 * `protected constructor (initialState: T)` - construct with the intial state of the store. Must be called from an extending class
-* `public getState$ (): Observable<T>` - returns an observable of the store's state. Underlying implementation uses a BehaviorSubject so this call will always receive the current state
-* `public getState (): T` - returns the current state synchronously
+* `public getState$ (): Observable<WithPreviousState<T>>` - returns an observable of the store's state. Underlying implementation uses a BehaviorSubject so this call will always receive the current state
+* `public getState (): WithPreviousState<T>` - returns the current state synchronously
 * `public destroy (): void` - calls `complete()` on the underlying BehaviorSubject. **Once a store has destroyed, it can no longer be used**
 * `protected dispatch (state: Partial<T>): void` - updates the state with the passed in state then calls `next()` on the underlying BehaviorSubject. _This will do a shallow copy of the state using the spread operator (`...`). This is to keep state immutable._
+
+> You can access the immediate
 
 # Future Features
 * WildEmitter implementation

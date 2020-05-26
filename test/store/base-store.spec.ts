@@ -17,20 +17,29 @@ const initialState: ITestStore = {
 };
 
 describe('BaseStore', () => {
+  const addInitialPreviousState = (state: ITestStore) => ({
+    ...state,
+    __previousState: state
+  });
+
   beforeEach(() => {
     store = new TestableBaseStore(initialState);
   });
 
   describe('constructor()', () => {
     test('should initialize state', () => {
-      expect(store['__state'].getValue()).toEqual(initialState);
+      expect(store['__state'].getValue()).toEqual(
+        addInitialPreviousState(initialState)
+      );
     });
   });
 
   describe('getState$()', () => {
     test('should subscribe to the state', (done) => {
       store.getState$().subscribe(state => {
-        expect(state).toEqual(initialState);
+        expect(state).toEqual(
+          addInitialPreviousState(initialState)
+        );
         done();
       });
     });
@@ -38,7 +47,9 @@ describe('BaseStore', () => {
 
   describe('getState()', () => {
     test('should retrieve the most recent stat', () => {
-      expect(store.getState()).toEqual(initialState);
+      expect(store.getState()).toEqual(
+        addInitialPreviousState(initialState)
+      );
     });
   });
 
@@ -52,10 +63,24 @@ describe('BaseStore', () => {
       const newUser = 'jim-bobby';
 
       store['dispatch']({ isLoading: true });
-      expect(store.getState()).toEqual({ user: USER, isLoading: true });
+      expect(store.getState()).toEqual({
+        user: USER,
+        isLoading: true,
+        __previousState: {
+          user: USER,
+          isLoading: false
+        }
+      });
 
       store['dispatch']({ user: newUser });
-      expect(store.getState()).toEqual({ user: newUser, isLoading: true });
+      expect(store.getState()).toEqual({
+        user: newUser,
+        isLoading: true,
+        __previousState: {
+          user: USER,
+          isLoading: true
+        }
+      });
     });
   });
 

@@ -1,11 +1,13 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 
+export type WithPreviousState<T extends { [key: string]: any }> = T & { __previousState: T };
+
 /**
  * BaseStore class to manage state in a unified location
  */
-export abstract class BaseStore<T> {
+export abstract class BaseStore<T extends { [key: string]: any }> {
   /* tslint:disable-next-line */
-  private __state: BehaviorSubject<T>;
+  private __state: BehaviorSubject<WithPreviousState<T>>;
 
   /* tslint:disable-next-line */
   private __hasDestroyed: boolean = false;
@@ -16,20 +18,20 @@ export abstract class BaseStore<T> {
    * @param initialState state to start store with
    */
   protected constructor (initialState: T) {
-    this.__state = new BehaviorSubject(initialState);
+    this.__state = new BehaviorSubject({ ...initialState, __previousState: initialState });
   }
 
   /**
    * Get the state as an observable
    */
-  public getState$ (): Observable<T> {
+  public getState$ (): Observable<WithPreviousState<T>> {
     return this.__state.asObservable();
   }
 
   /**
    * Get the state synchonously
    */
-  public getState (): T {
+  public getState (): WithPreviousState<T> {
     return this.__state.getValue();
   }
 
@@ -69,7 +71,9 @@ export abstract class BaseStore<T> {
     if (this.__hasDestroyed) {
       throw new Error('Cannot dispatch for BaseState objects that have already destroyed');
     }
-    this.__state.next({ ...this.__state.getValue(), ...state });
+    const currentState = this.__state.getValue();
+    delete currentState.__previousState;
+    this.__state.next({ ...currentState, ...state, __previousState: currentState });
   }
 
   /**

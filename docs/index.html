@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>rxjs-util-classes</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for rxjs-util-classes">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -241,7 +241,7 @@ replayMap.delete(<span class="hljs-string">'my-key'</span>);
 					<li><code>entries$ (): IterableIterator&lt;[K, Observable&lt;V&gt;]&gt;</code> - returns an iterable iterator over key/value pairs of the underlying <code>Map</code> where the value is the key&#39;s <em>observable</em></li>
 					<li><code>values$ (): IterableIterator&lt;Observable&lt;V&gt;&gt;</code> - returns an iterable iterator over the underlying <code>Map</code>&#39;s values as <em>observables</em></li>
 				</ul>
-				<a href="#methods-only-available-on-codebehaviormapcode" id="methods-only-available-on-codebehaviormapcode" style="color: inherit; text-decoration: none;">
+				<a href="#methods-only-available-on-behaviormap" id="methods-only-available-on-behaviormap" style="color: inherit; text-decoration: none;">
 					<h5>Methods only available on <code>BehaviorMap</code></h5>
 				</a>
 				<p>Because Behavior Subjects keep their last value, we can interact with that value synchronously. </p>
@@ -356,14 +356,18 @@ authenticate()
 					<h3>Available BaseStore API methods</h3>
 				</a>
 				<p><code>BaseStore</code> is an abstract class and must be extended. </p>
-				<p><strong><code>T</code></strong> = generic type defined as the state type (<code>any</code>)</p>
+				<p><strong><code>T</code></strong> = generic type defined as the state type (<code>{ [key: string]: any }</code>)
+				<strong><code>WithPreviousState&lt;T&gt;</code></strong> = generic type defined as the state type (<code>T &amp; { __previousState: T }</code> where <code>T = { [key: string]: any }</code>)</p>
 				<ul>
 					<li><code>protected constructor (initialState: T)</code> - construct with the intial state of the store. Must be called from an extending class</li>
-					<li><code>public getState$ (): Observable&lt;T&gt;</code> - returns an observable of the store&#39;s state. Underlying implementation uses a BehaviorSubject so this call will always receive the current state</li>
-					<li><code>public getState (): T</code> - returns the current state synchronously</li>
+					<li><code>public getState$ (): Observable&lt;WithPreviousState&lt;T&gt;&gt;</code> - returns an observable of the store&#39;s state. Underlying implementation uses a BehaviorSubject so this call will always receive the current state</li>
+					<li><code>public getState (): WithPreviousState&lt;T&gt;</code> - returns the current state synchronously</li>
 					<li><code>public destroy (): void</code> - calls <code>complete()</code> on the underlying BehaviorSubject. <strong>Once a store has destroyed, it can no longer be used</strong></li>
 					<li><code>protected dispatch (state: Partial&lt;T&gt;): void</code> - updates the state with the passed in state then calls <code>next()</code> on the underlying BehaviorSubject. <em>This will do a shallow copy of the state using the spread operator (<code>...</code>). This is to keep state immutable.</em></li>
 				</ul>
+				<blockquote>
+					<p>You can access the immediate</p>
+				</blockquote>
 				<a href="#future-features" id="future-features" style="color: inherit; text-decoration: none;">
 					<h1>Future Features</h1>
 				</a>
