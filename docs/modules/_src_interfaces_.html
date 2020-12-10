@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;interfaces&quot; | rxjs-util-classes</title>
+	<title>&quot;src/interfaces&quot; | rxjs-util-classes</title>
 	<meta name="description" content="Documentation for rxjs-util-classes">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_interfaces_.html">&quot;interfaces&quot;</a>
+					<a href="_src_interfaces_.html">&quot;src/interfaces&quot;</a>
 				</li>
 			</ul>
-			<h1>Module &quot;interfaces&quot;</h1>
+			<h1>Module &quot;src/interfaces&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -73,10 +73,10 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="_interfaces_.html#optionvalue" class="tsd-kind-icon">Option<wbr>Value</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="_interfaces_.html#subjecttype" class="tsd-kind-icon">Subject<wbr>Type</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_interfaces_.html#supportedkeytypes" class="tsd-kind-icon">Supported<wbr>Key<wbr>Types</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_interfaces_.html#supportedsubjecttypes" class="tsd-kind-icon">Supported<wbr>Subject<wbr>Types</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="_src_interfaces_.html#optionvalue" class="tsd-kind-icon">Option<wbr>Value</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="_src_interfaces_.html#subjecttype" class="tsd-kind-icon">Subject<wbr>Type</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_src_interfaces_.html#supportedkeytypes" class="tsd-kind-icon">Supported<wbr>Key<wbr>Types</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_src_interfaces_.html#supportedsubjecttypes" class="tsd-kind-icon">Supported<wbr>Subject<wbr>Types</a></li>
 							</ul>
 						</section>
 					</div>
@@ -90,19 +90,19 @@
 					<div class="tsd-signature tsd-kind-icon">Option<wbr>Value&lt;S, V&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">S</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">BehaviorSubject</span><span class="tsd-signature-symbol"> ? </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> : </span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">ReplaySubject</span><span class="tsd-signature-symbol"> ? </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> : </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/djhouseknecht/rxjs-util-classes/blob/b00143c/src/interfaces.ts#L25">interfaces.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/djhouseknecht/rxjs-util-classes/blob/a10e3c1/src/interfaces.ts#L25">src/interfaces.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Utility type to determine which option type to support based
-							on <a href="_interfaces_.html#supportedsubjecttypes">SupportedSubjectTypes</a></p>
+							on <a href="_src_interfaces_.html#supportedsubjecttypes">SupportedSubjectTypes</a></p>
 						</div>
 					</div>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
 						<li>
-							<h4>S<span class="tsd-signature-symbol">: </span><a href="_interfaces_.html#supportedsubjecttypes" class="tsd-signature-type">SupportedSubjectTypes</a></h4>
+							<h4>S<span class="tsd-signature-symbol">: </span><a href="_src_interfaces_.html#supportedsubjecttypes" class="tsd-signature-type">SupportedSubjectTypes</a></h4>
 						</li>
 						<li>
 							<h4>V</h4>
@@ -115,19 +115,19 @@
 					<div class="tsd-signature tsd-kind-icon">Subject<wbr>Type&lt;S, V&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">S</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">BehaviorSubject</span><span class="tsd-signature-symbol"> ? </span><span class="tsd-signature-type">BehaviorSubject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> : </span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">ReplaySubject</span><span class="tsd-signature-symbol"> ? </span><span class="tsd-signature-type">ReplaySubject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> : </span><span class="tsd-signature-type">Subject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/djhouseknecht/rxjs-util-classes/blob/b00143c/src/interfaces.ts#L17">interfaces.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/djhouseknecht/rxjs-util-classes/blob/a10e3c1/src/interfaces.ts#L17">src/interfaces.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Utility type to determine the correct subject type to return based
-							on <a href="_interfaces_.html#supportedsubjecttypes">SupportedSubjectTypes</a></p>
+							on <a href="_src_interfaces_.html#supportedsubjecttypes">SupportedSubjectTypes</a></p>
 						</div>
 					</div>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
 						<li>
-							<h4>S<span class="tsd-signature-symbol">: </span><a href="_interfaces_.html#supportedsubjecttypes" class="tsd-signature-type">SupportedSubjectTypes</a></h4>
+							<h4>S<span class="tsd-signature-symbol">: </span><a href="_src_interfaces_.html#supportedsubjecttypes" class="tsd-signature-type">SupportedSubjectTypes</a></h4>
 						</li>
 						<li>
 							<h4>V</h4>
@@ -140,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">Supported<wbr>Key<wbr>Types<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/djhouseknecht/rxjs-util-classes/blob/b00143c/src/interfaces.ts#L6">interfaces.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/djhouseknecht/rxjs-util-classes/blob/a10e3c1/src/interfaces.ts#L6">src/interfaces.ts:6</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -155,7 +155,7 @@
 					<div class="tsd-signature tsd-kind-icon">Supported<wbr>Subject<wbr>Types<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">BehaviorSubject</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">ReplaySubject</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">Subject</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/djhouseknecht/rxjs-util-classes/blob/b00143c/src/interfaces.ts#L11">interfaces.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/djhouseknecht/rxjs-util-classes/blob/a10e3c1/src/interfaces.ts#L11">src/interfaces.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -173,41 +173,41 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_index_.html">&quot;index&quot;</a>
+						<a href="_src_index_.html">&quot;src/index&quot;</a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="_interfaces_.html">&quot;interfaces&quot;</a>
+						<a href="_src_interfaces_.html">&quot;src/interfaces&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_maps_base_map_.html">&quot;maps/base-<wbr>map&quot;</a>
+						<a href="_src_maps_base_map_.html">&quot;src/maps/base-<wbr>map&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_maps_behavior_map_.html">&quot;maps/behavior-<wbr>map&quot;</a>
+						<a href="_src_maps_behavior_map_.html">&quot;src/maps/behavior-<wbr>map&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_maps_observable_map_.html">&quot;maps/observable-<wbr>map&quot;</a>
+						<a href="_src_maps_observable_map_.html">&quot;src/maps/observable-<wbr>map&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_maps_replay_map_.html">&quot;maps/replay-<wbr>map&quot;</a>
+						<a href="_src_maps_replay_map_.html">&quot;src/maps/replay-<wbr>map&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_store_base_store_.html">&quot;store/base-<wbr>store&quot;</a>
+						<a href="_src_store_base_store_.html">&quot;src/store/base-<wbr>store&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_interfaces_.html#optionvalue" class="tsd-kind-icon">Option<wbr>Value</a>
+						<a href="_src_interfaces_.html#optionvalue" class="tsd-kind-icon">Option<wbr>Value</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_interfaces_.html#subjecttype" class="tsd-kind-icon">Subject<wbr>Type</a>
+						<a href="_src_interfaces_.html#subjecttype" class="tsd-kind-icon">Subject<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="_interfaces_.html#supportedkeytypes" class="tsd-kind-icon">Supported<wbr>Key<wbr>Types</a>
+						<a href="_src_interfaces_.html#supportedkeytypes" class="tsd-kind-icon">Supported<wbr>Key<wbr>Types</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="_interfaces_.html#supportedsubjecttypes" class="tsd-kind-icon">Supported<wbr>Subject<wbr>Types</a>
+						<a href="_src_interfaces_.html#supportedsubjecttypes" class="tsd-kind-icon">Supported<wbr>Subject<wbr>Types</a>
 					</li>
 				</ul>
 			</nav>
@@ -233,6 +233,5 @@
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>

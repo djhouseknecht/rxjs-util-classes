@@ -93,11 +93,11 @@
 
 yarn add rxjs rxjs-util-classes</code></pre>
 				<p>Importing:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> { ObservableMap } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { ObservableMap } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs-util-classes&#x27;</span>;
 
 <span class="hljs-comment">// or </span>
 
-<span class="hljs-keyword">const</span> { ObservableMap } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'rxjs-util-classes'</span>);</code></pre>
+<span class="hljs-keyword">const</span> { ObservableMap } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;rxjs-util-classes&#x27;</span>);</code></pre>
 				<hr>
 				<a href="#observable-maps" id="observable-maps" style="color: inherit; text-decoration: none;">
 					<h1>Observable Maps</h1>
@@ -121,25 +121,25 @@ yarn add rxjs rxjs-util-classes</code></pre>
 					<h3>ObservableMap</h3>
 				</a>
 				<p>Uses the standard RxJS Subject so subscribers will only receive values emitted <em>after</em> they subscribe. (<a href="https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_observable_map_.observablemap.html">Full API</a>)</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { ObservableMap } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { ObservableMap } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs-util-classes&#x27;</span>;
 
 <span class="hljs-keyword">const</span> observableMap = <span class="hljs-keyword">new</span> ObservableMap&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;();
 
-observableMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'this value will not be received'</span>);
+observableMap.set(<span class="hljs-string">&#x27;my-key&#x27;</span>, <span class="hljs-string">&#x27;this value will not be received&#x27;</span>);
 
-observableMap.get$(<span class="hljs-string">'my-key'</span>).subscribe(
-  <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Value: '</span> + value),
-  <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error: '</span> + error),
-  <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'complete'</span>)
+observableMap.get$(<span class="hljs-string">&#x27;my-key&#x27;</span>).subscribe(
+  <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Value: &#x27;</span> + value),
+  <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Error: &#x27;</span> + error),
+  <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;complete&#x27;</span>)
 );
 
 <span class="hljs-comment">// `.set()` will emit the value to all subscribers</span>
-observableMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'first-data'</span>);
-observableMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'second-data'</span>);
+observableMap.set(<span class="hljs-string">&#x27;my-key&#x27;</span>, <span class="hljs-string">&#x27;first-data&#x27;</span>);
+observableMap.set(<span class="hljs-string">&#x27;my-key&#x27;</span>, <span class="hljs-string">&#x27;second-data&#x27;</span>);
 
 <span class="hljs-comment">// delete calls `.complete()` to clean up </span>
 <span class="hljs-comment">// the observable</span>
-observableMap.delete(<span class="hljs-string">'my-key'</span>);
+observableMap.delete(<span class="hljs-string">&#x27;my-key&#x27;</span>);
 
 <span class="hljs-comment">// OUTPUT:</span>
 <span class="hljs-comment">// Value: first-data</span>
@@ -149,22 +149,22 @@ observableMap.delete(<span class="hljs-string">'my-key'</span>);
 					<h3>BehaviorMap</h3>
 				</a>
 				<p>Uses the RxJS BehaviorSubject so subscribers will <em>always</em> receive the last emitted value. This class <em>requires</em> an initial value to construct all underlying BehaviorSubjects. (<a href="https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_behavior_map_.behaviormap.html">Full API</a>)</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { BehaviorMap } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { BehaviorMap } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs-util-classes&#x27;</span>;
 
-<span class="hljs-keyword">const</span> behaviorMap = <span class="hljs-keyword">new</span> BehaviorMap&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-string">'initial-data'</span>);
+<span class="hljs-keyword">const</span> behaviorMap = <span class="hljs-keyword">new</span> BehaviorMap&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-string">&#x27;initial-data&#x27;</span>);
 
-behaviorMap.get$(<span class="hljs-string">'my-key'</span>).subscribe(
-  <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Value: '</span> + value),
-  <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error: '</span> + error),
-  <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'complete'</span>)
+behaviorMap.get$(<span class="hljs-string">&#x27;my-key&#x27;</span>).subscribe(
+  <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Value: &#x27;</span> + value),
+  <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Error: &#x27;</span> + error),
+  <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;complete&#x27;</span>)
 );
 
-behaviorMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'first-data'</span>);
-behaviorMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'second-data'</span>);
+behaviorMap.set(<span class="hljs-string">&#x27;my-key&#x27;</span>, <span class="hljs-string">&#x27;first-data&#x27;</span>);
+behaviorMap.set(<span class="hljs-string">&#x27;my-key&#x27;</span>, <span class="hljs-string">&#x27;second-data&#x27;</span>);
 
 <span class="hljs-comment">// emitError calls `.error()` which ends the observable stream</span>
 <span class="hljs-comment">//  it will also remove the mey-value from the map</span>
-behaviorMap.emitError(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'there was an error!'</span>);
+behaviorMap.emitError(<span class="hljs-string">&#x27;my-key&#x27;</span>, <span class="hljs-string">&#x27;there was an error!&#x27;</span>);
 
 <span class="hljs-comment">// OUTPUT:</span>
 <span class="hljs-comment">// Value: initial-data</span>
@@ -175,24 +175,24 @@ behaviorMap.emitError(<span class="hljs-string">'my-key'</span>, <span class="hl
 					<h3>ReplayMap</h3>
 				</a>
 				<p>Uses the RxJS ReplaySubject so subscribers will receive the last <code>nth</code> emitted values. This class <em>requires</em> an initial replay number to construct all underlying ReplaySubject. (<a href="https://djhouseknecht.github.io/rxjs-util-classes/classes/_maps_replay_map_.replaymap.html">Full API</a>)</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { ReplayMap } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { ReplayMap } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs-util-classes&#x27;</span>;
 
 <span class="hljs-keyword">const</span> replayMap = <span class="hljs-keyword">new</span> ReplayMap&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-number">2</span>);
 
-replayMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'first-data'</span>);
-replayMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'second-data'</span>);
-replayMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'third-data'</span>);
-replayMap.set(<span class="hljs-string">'my-key'</span>, <span class="hljs-string">'fourth-data'</span>);
+replayMap.set(<span class="hljs-string">&#x27;my-key&#x27;</span>, <span class="hljs-string">&#x27;first-data&#x27;</span>);
+replayMap.set(<span class="hljs-string">&#x27;my-key&#x27;</span>, <span class="hljs-string">&#x27;second-data&#x27;</span>);
+replayMap.set(<span class="hljs-string">&#x27;my-key&#x27;</span>, <span class="hljs-string">&#x27;third-data&#x27;</span>);
+replayMap.set(<span class="hljs-string">&#x27;my-key&#x27;</span>, <span class="hljs-string">&#x27;fourth-data&#x27;</span>);
 
-replayMap.get$(<span class="hljs-string">'my-key'</span>).subscribe(
-  <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Value: '</span> + value),
-  <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error: '</span> + error),
-  <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'complete'</span>)
+replayMap.get$(<span class="hljs-string">&#x27;my-key&#x27;</span>).subscribe(
+  <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Value: &#x27;</span> + value),
+  <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Error: &#x27;</span> + error),
+  <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;complete&#x27;</span>)
 );
 
 <span class="hljs-comment">// delete calls `.complete()` to clean up </span>
 <span class="hljs-comment">// the observable</span>
-replayMap.delete(<span class="hljs-string">'my-key'</span>);
+replayMap.delete(<span class="hljs-string">&#x27;my-key&#x27;</span>);
 
 <span class="hljs-comment">// OUTPUT:</span>
 <span class="hljs-comment">// Value: third-data</span>
@@ -281,7 +281,7 @@ replayMap.delete(<span class="hljs-string">'my-key'</span>);
 					<h3>BaseStore</h3>
 				</a>
 				<p><strong>src/app-store.ts</strong> <em>(pseudo file to show store implementation)</em></p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { BaseStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs-util-classes'</span>;
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { BaseStore } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs-util-classes&#x27;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> IUser {
   username: <span class="hljs-built_in">string</span>;
@@ -305,15 +305,15 @@ replayMap.delete(<span class="hljs-string">'my-key'</span>);
  */</span>
 <span class="hljs-keyword">class</span> AppStore <span class="hljs-keyword">extends</span> BaseStore&lt;IAppState&gt; {
   <span class="hljs-keyword">constructor</span> (<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">super</span>(initialState); <span class="hljs-comment">// set the store's initial state</span>
+    <span class="hljs-built_in">super</span>(initialState); <span class="hljs-comment">// set the store&#x27;s initial state</span>
   }
 
   <span class="hljs-keyword">public</span> setIsLoading (isLoading: <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">void</span> {
-    <span class="hljs-keyword">this</span>.dispatch({ isLoading });
+    <span class="hljs-built_in">this</span>.dispatch({ isLoading });
   }
 
   <span class="hljs-keyword">public</span> setAuthenticatedUser (authenticatedUser?: IUser): <span class="hljs-built_in">void</span> {
-    <span class="hljs-keyword">this</span>.dispatch({ authenticatedUser });
+    <span class="hljs-built_in">this</span>.dispatch({ authenticatedUser });
   }
 
   <span class="hljs-comment">// these methods are inherited from BaseStore</span>
@@ -324,29 +324,29 @@ replayMap.delete(<span class="hljs-string">'my-key'</span>);
 <span class="hljs-comment">/* export a singleton instance of the store */</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> AppStore();</code></pre>
 				<p><strong>src/example-component.ts</strong> <em>(pseudo component that will authenticate the user and interact with the app&#39;s state)</em></p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { store, IUser, IAppState } <span class="hljs-keyword">from</span> <span class="hljs-string">'./app-store'</span>;
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { store, IUser, IAppState } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./app-store&#x27;</span>;
 
 <span class="hljs-comment">/**
  * Function to mock an authentication task
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">authenticate</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
-    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-      res({ username: <span class="hljs-string">'bob-samuel'</span>, authToken: <span class="hljs-string">'qwerty-123'</span> });
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+      res({ username: <span class="hljs-string">&#x27;bob-samuel&#x27;</span>, authToken: <span class="hljs-string">&#x27;qwerty-123&#x27;</span> });
     }, <span class="hljs-number">1000</span>);
   });
 }
 
 store.getState$().subscribe(<span class="hljs-function">(<span class="hljs-params">appState: IAppState</span>) =&gt;</span> {
   <span class="hljs-comment">/* do something with the state as it changes; 
-    maybe show a spinner or the authenticatedUser's username */</span>
+    maybe show a spinner or the authenticatedUser&#x27;s username */</span>
 });
 
 <span class="hljs-comment">/* authenticate to get the user */</span>
 store.setIsLoading(<span class="hljs-literal">true</span>);
 authenticate()
   .then(<span class="hljs-function">(<span class="hljs-params">user: IUser</span>) =&gt;</span> {
-    <span class="hljs-comment">/* here we set the store's state via the methods the 
+    <span class="hljs-comment">/* here we set the store&#x27;s state via the methods the 
       store exposed */</span>
     store.setAuthenticatedUser(user);
     store.setIsLoading(<span class="hljs-literal">false</span>);
@@ -435,25 +435,25 @@ npm run <span class="hljs-built_in">test</span></code></pre>
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_index_.html">&quot;index&quot;</a>
+						<a href="modules/_src_index_.html">&quot;src/index&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_interfaces_.html">&quot;interfaces&quot;</a>
+						<a href="modules/_src_interfaces_.html">&quot;src/interfaces&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_maps_base_map_.html">&quot;maps/base-<wbr>map&quot;</a>
+						<a href="modules/_src_maps_base_map_.html">&quot;src/maps/base-<wbr>map&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_maps_behavior_map_.html">&quot;maps/behavior-<wbr>map&quot;</a>
+						<a href="modules/_src_maps_behavior_map_.html">&quot;src/maps/behavior-<wbr>map&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_maps_observable_map_.html">&quot;maps/observable-<wbr>map&quot;</a>
+						<a href="modules/_src_maps_observable_map_.html">&quot;src/maps/observable-<wbr>map&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_maps_replay_map_.html">&quot;maps/replay-<wbr>map&quot;</a>
+						<a href="modules/_src_maps_replay_map_.html">&quot;src/maps/replay-<wbr>map&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_store_base_store_.html">&quot;store/base-<wbr>store&quot;</a>
+						<a href="modules/_src_store_base_store_.html">&quot;src/store/base-<wbr>store&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -483,6 +483,5 @@ npm run <span class="hljs-built_in">test</span></code></pre>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
