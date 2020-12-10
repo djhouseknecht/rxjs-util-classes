@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 # [v2.2.0](https://github.com/djhouseknecht/rxjs-util-classes/compare/v2.1.0...v2.2.0) - 2020-12-10
-
+### Added
+* a `package.json#browser` field and a rollup build to ES modules
 
 ### Security
 * Updated security and other dependencies
