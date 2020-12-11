@@ -18,7 +18,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "tslib": "^1.14.1"
+    "tslib": "^2.0.3"
   },
   "peerDependencies": {
     "rxjs": "^6.0.0"
