@@ -5,8 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-# [Unreleased](https://github.com/djhouseknecht/rxjs-util-classes/compare/v2.2.0...HEAD)
+# [Unreleased](https://github.com/djhouseknecht/rxjs-util-classes/compare/v2.2.1...HEAD)
 
+
+# [v2.2.1](https://github.com/djhouseknecht/rxjs-util-classes/compare/v2.2.0...v2.2.1) - 2021-04-22
+### Security
+* Updated security and other dependencies
 
 # [v2.2.0](https://github.com/djhouseknecht/rxjs-util-classes/compare/v2.1.0...v2.2.0) - 2020-12-10
 ### Added
@@ -34,19 +38,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 * **README:** updated install instructions
 
-### Added 
+### Added
 * **BaseStore/recipe:** added a dynamic base-store example
 
 # [v1.2.0](https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.3...v1.2.0)
 
-### Added 
+### Added
 * **BaseStore** utility class which is a loose implementation of redux's state management
 * Documentation for BaseStore
 
 # [v1.1.3](https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.2...v1.1.3)
 
 ### Fixed
-* Interface import in `ObservableMap` and `ReplayMap` that was throwing an 
+* Interface import in `ObservableMap` and `ReplayMap` that was throwing an
   error when being used by 3rd party applications
 
 # [v1.1.2](https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.1...v1.1.2)
@@ -60,7 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 # [v1.1.1](https://github.com/djhouseknecht/rxjs-util-classes/compare/v1.1.0...v1.1.1)
 
-### Added 
+### Added
 * CHANGELOG
 
 ### Changed
@@ -76,5 +80,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 # [v1.0.0](https://github.com/djhouseknecht/rxjs-util-classes/releases/tag/v1.0.0)
 
 ### Added
-* Initial release 
+* Initial release
 * README
