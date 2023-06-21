@@ -1,7 +1,8 @@
+# TRAVIS NO LONGER WORKS FOR OSS PROJECTS.
+# Migrated to Github Actions in June, 2023
 language: node_js
 node_js:
-  - 12
-  - 10
+  - 18
 
 cache: npm
 
@@ -26,7 +27,7 @@ jobs:
     # build and release
     - stage: "Release"
       if: branch == master && !fork
-      node_js: 12
+      node_js: 18
       script:
         - npm run build
         - npx semantic-release

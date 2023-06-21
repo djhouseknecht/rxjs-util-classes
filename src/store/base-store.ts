@@ -72,7 +72,7 @@ export abstract class BaseStore<T extends { [key: string]: any }> {
       throw new Error('Cannot dispatch for BaseState objects that have already destroyed');
     }
     const currentState = this.__state.getValue();
-    delete currentState.__previousState;
+    delete (currentState as any).__previousState;
     this.__state.next({ ...currentState, ...state, __previousState: currentState });
   }
 
