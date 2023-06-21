@@ -11,16 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v3
         with:
           node-version: '18.x'
+      - run: npm install
       - run: npm test
       - run: npm run lint
       # - run: npm run codecov
       - run: npm run build
   release:
     name: 'Publish to NPM registry'
-    needs: [build]
     runs-on: ubuntu-latest
+    needs: [build]
+    if: github.repository == 'djhouseknecht/rxjs-util-classes' && github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
@@ -28,7 +32,9 @@ jobs:
         with:
           node-version: 18.x
           registry-url: 'https://registry.npmjs.org'
+      - run: npm install
       - run: npm run build
       - run: npx semantic-release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_RXJS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
