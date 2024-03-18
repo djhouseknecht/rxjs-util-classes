@@ -5,8 +5,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-# [Unreleased](https://github.com/djhouseknecht/rxjs-util-classes/compare/v2.2.1...HEAD)
+# [Unreleased](https://github.com/djhouseknecht/rxjs-util-classes/compare/v3.0.1...HEAD)
 
+# [v3.0.1](https://github.com/djhouseknecht/rxjs-util-classes/compare/v3.0.0...v3.0.1) - 2024-03-18
+### Security
+* Updated security and other dependencies
+
+# [v3.0.0](https://github.com/djhouseknecht/rxjs-util-classes/compare/v2.2.1...v3.0.0) - 2023-06-21
+### BREAKING CHANGE
+* **rxjs dependency:** moved rxjs to `peerDependencies` and will support `rxjs@^7.8.1`
+* **typescript dependency:** bump `typescript@^3.9.7` to `typescript@^4.9.5`
+
+### Security
+* Updated security and other dependencies
 
 # [v2.2.1](https://github.com/djhouseknecht/rxjs-util-classes/compare/v2.2.0...v2.2.1) - 2021-04-22
 ### Security
